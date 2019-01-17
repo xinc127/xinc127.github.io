@@ -7,18 +7,20 @@
   
   <title>viewports教程_学习笔记 | 这是一个博客网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概念:  设备的pixels和CSS的pixels设备pixels大多数情况下可以通过screen.width/height上获取到。 当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度  2、高度  2，面积扩大了2 * 2. 100% 缩放">
+  <meta name="description" content="概念:  设备的pixels和CSS的pixels设备pixels大多数情况下可以通过screen.width/height上获取到。 当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度  2、高度  2，面积扩大了2 * 2.  用户缩放时，浏览器自动使CSS的pixels缩放  100% 缩放 在缩放级别为10">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="viewports教程_学习笔记">
 <meta property="og:url" content="https://xinc127.github.io/2019/01/17/viewports/index.html">
 <meta property="og:site_name" content="这是一个博客网站">
-<meta property="og:description" content="概念:  设备的pixels和CSS的pixels设备pixels大多数情况下可以通过screen.width/height上获取到。 当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度  2、高度  2，面积扩大了2 * 2. 100% 缩放">
+<meta property="og:description" content="概念:  设备的pixels和CSS的pixels设备pixels大多数情况下可以通过screen.width/height上获取到。 当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度  2、高度  2，面积扩大了2 * 2.  用户缩放时，浏览器自动使CSS的pixels缩放  100% 缩放 在缩放级别为10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-17T07:33:44.104Z">
+<meta property="og:image" content="https://i.loli.net/2019/01/17/5c40471ec8bb0.png">
+<meta property="og:updated_time" content="2019-01-17T09:13:03.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="viewports教程_学习笔记">
-<meta name="twitter:description" content="概念:  设备的pixels和CSS的pixels设备pixels大多数情况下可以通过screen.width/height上获取到。 当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度  2、高度  2，面积扩大了2 * 2. 100% 缩放">
+<meta name="twitter:description" content="概念:  设备的pixels和CSS的pixels设备pixels大多数情况下可以通过screen.width/height上获取到。 当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度  2、高度  2，面积扩大了2 * 2.  用户缩放时，浏览器自动使CSS的pixels缩放  100% 缩放 在缩放级别为10">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/17/5c40471ec8bb0.png">
   
     <link rel="alternate" href="/atom.xml" title="这是一个博客网站" type="application/atom+xml">
   
@@ -93,7 +95,66 @@
       
         <h1 id="概念-设备的pixels和CSS的pixels"><a href="#概念-设备的pixels和CSS的pixels" class="headerlink" title="概念:  设备的pixels和CSS的pixels"></a>概念:  设备的pixels和CSS的pixels</h1><p>设备pixels大多数情况下可以通过screen.width/height上获取到。</p>
 <p>当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度 <em> 2、高度 </em> 2，面积扩大了2 * 2.</p>
-<h1 id="100-缩放"><a href="#100-缩放" class="headerlink" title="100% 缩放"></a>100% 缩放</h1>
+<blockquote>
+<p>用户缩放时，浏览器自动使CSS的pixels缩放</p>
+</blockquote>
+<h1 id="100-缩放"><a href="#100-缩放" class="headerlink" title="100% 缩放"></a>100% 缩放</h1><blockquote>
+<p>在缩放级别为100%时，1单位的CSS的pixels是严格相等于1单位的设备pixels</p>
+</blockquote>
+<h1 id="屏幕尺寸-Screen-size"><a href="#屏幕尺寸-Screen-size" class="headerlink" title="屏幕尺寸 Screen size"></a>屏幕尺寸 Screen size</h1><p>screen.width/height</p>
+<ul>
+<li><p>用户屏幕的完整大小</p>
+</li>
+<li><p>显示器特性与浏览器无关</p>
+</li>
+</ul>
+<h1 id="浏览器尺寸-Window-size"><a href="#浏览器尺寸-Window-size" class="headerlink" title="浏览器尺寸 Window size"></a>浏览器尺寸 Window size</h1><p>window.innerWidth/Height</p>
+<ul>
+<li>包含滚动条尺寸浏览器的完整大小</li>
+</ul>
+<h1 id="滚动移位-Scrolling-offset"><a href="#滚动移位-Scrolling-offset" class="headerlink" title="滚动移位 Scrolling offset"></a>滚动移位 Scrolling offset</h1><p>window.pageX/YOffset</p>
+<ul>
+<li>页面的位移</li>
+</ul>
+<p>window.pageXOffset 和 window.pageYOffset，定义了页面（document）的相对于窗口原点的水平和垂直位移。因此可以知道用户将页面滚动了多少。</p>
+<blockquote>
+<p>缩放不影响window.pageX/YOffset的大小</p>
+</blockquote>
+<h1 id="视窗-viewport"><a href="#视窗-viewport" class="headerlink" title="视窗 viewport"></a>视窗 viewport</h1><blockquote>
+<p>决定了页面中最高块状（block）元素： <html> 元素 的大小</html></p>
+</blockquote>
+<p><html>宽度受 viewport 所限制，<html> 元素宽度为 viewport 的100%.</html></html></p>
+<p>通常，一个块级元素占其父级元素的100%宽度。所以<body>的宽度就是其父元素<html>的100%.</html></body></p>
+<ul>
+<li>viewport宽度等于浏览器宽度</li>
+<li>缩放比例100%显示正常，放大浏览器时，viewport变得比网站的宽度更小，对viewport无影响，但页面内容溢出了<html>元素</html></li>
+</ul>
+<p><img src="https://i.loli.net/2019/01/17/5c40471ec8bb0.png" alt="1547714572314"></p>
+<h1 id="页面的宽度-document-width"><a href="#页面的宽度-document-width" class="headerlink" title="页面的宽度 document.width"></a>页面的宽度 document.width</h1><h1 id="度量-viewport"><a href="#度量-viewport" class="headerlink" title="度量 viewport"></a>度量 viewport</h1><p>doucment.documentElement.clientWidth/Height</p>
+<ul>
+<li>viewport 的尺寸</li>
+</ul>
+<p>document.documentElement 就是 <html> 元素：HTML文档的根元素</html></p>
+<p>虽然document.documentElement好像是从<html>元素获取值，但实际上是viewport.通过给<html>元素赋值，再通过docuent.documentElement获取到的值不变。（不建议给<html>元素赋值）</html></html></html></p>
+<blockquote>
+<p>这个特殊的规则只针对这个特殊的情况下，在其余情况下等于元素使用的实际宽度。</p>
+</blockquote>
+<h1 id="两个特性对-two-property-pairs"><a href="#两个特性对-two-property-pairs" class="headerlink" title="两个特性对 two property pairs"></a>两个特性对 two property pairs</h1><p>用来描述viewport尺寸的还有 window.innerWidth/Height</p>
+<p>两者的区别：</p>
+<ul>
+<li>window.innerWidth/Height 包含滚动条</li>
+<li>document.documentElement.clientWidth/Height 不包含</li>
+</ul>
+<h1 id="度量-元素"><a href="#度量-元素" class="headerlink" title="度量  元素"></a>度量 <html> 元素</html></h1><p>document.documentElement.offsetWidth/Height</p>
+<p>用来获取<html>元素的尺寸</html></p>
+<h1 id="事件坐标-Event-coordinates"><a href="#事件坐标-Event-coordinates" class="headerlink" title="事件坐标 Event coordinates"></a>事件坐标 Event coordinates</h1><p>pageX/Y、clientX/Y、screenX/Y分别是</p>
+<ul>
+<li>从<html>原点到事件触发的CSS的pixels</html></li>
+<li>从浏览器（viewport）原点到事件触发的CSS的pixels</li>
+<li>从显示器原点到事件触发的CSS的pixels</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上为桌面浏览器涉及到的一些概念。</p>
+
       
     </div>
     <footer class="article-footer">

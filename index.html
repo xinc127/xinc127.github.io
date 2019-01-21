@@ -62,6 +62,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vscode-eslint-prettier" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/21/vscode-eslint-prettier/" class="article-date">
+  <time datetime="2019-01-21T09:28:54.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/21/vscode-eslint-prettier/">VSCode配置eslint和prettier</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue-cli3创建项目"><a href="#Vue-cli3创建项目" class="headerlink" title="Vue cli3创建项目"></a>Vue cli3创建项目</h1><p><img src="/home/chaoxin/.config/Typora/typora-user-images/1548064288982.png" alt="1548064288982"></p>
+<p><img src="/home/chaoxin/.config/Typora/typora-user-images/1548064321147.png" alt="1548064321147"></p>
+<p><code>packjson.json</code>配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"@vue/cli-plugin-babel"</span>: <span class="string">"^3.0.5"</span>,</span><br><span class="line">    <span class="string">"@vue/cli-plugin-eslint"</span>: <span class="string">"^3.0.5"</span>,</span><br><span class="line">    <span class="string">"@vue/cli-service"</span>: <span class="string">"^3.0.5"</span>,</span><br><span class="line">    <span class="string">"@vue/eslint-config-prettier"</span>: <span class="string">"^4.0.1"</span>,</span><br><span class="line">    <span class="string">"babel-eslint"</span>: <span class="string">"^10.0.1"</span>,</span><br><span class="line">    <span class="string">"eslint"</span>: <span class="string">"^5.8.0"</span>,</span><br><span class="line">    <span class="string">"eslint-plugin-vue"</span>: <span class="string">"^5.0.0"</span>,</span><br><span class="line">    <span class="string">"vue-template-compiler"</span>: <span class="string">"^2.5.21"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>.eslintrc.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extends: [<span class="string">'plugin:vue/strongly-recommended'</span>, <span class="string">'@vue/prettier'</span>],</span><br></pre></td></tr></table></figure>
+<h1 id="VSCode-配置"><a href="#VSCode-配置" class="headerlink" title="VSCode 配置"></a>VSCode 配置</h1><p>安装以下<code>ESLint</code>、<code>Prettier - Code formatter</code>、<code>Vetur</code>插件</p>
+<p><code>Vetur</code>插件</p>
+<ul>
+<li>Vetur支持.vue文件的语法高亮显示，除了支持template模板以外，还支持大多数主流的前端开发脚本和插件，比如Sass和TypeScript</li>
+<li><strong>Snippet </strong> 可以使用一些snippet来编写不同的脚本，比如在script中申明 <em>lang=”ts” 来开发TypeScript</em></li>
+<li><strong>Emmet</strong>  </li>
+<li><strong>错误检测</strong> Vetur默认使用 <em>eslint-plugin-vue@beta 来检测</em> <em><template></template></em></li>
+</ul>
+<p><code>Prettier - Code formatter</code>插件</p>
+<ul>
+<li>格式化工具</li>
+</ul>
+<p><code>ESLint</code>插件</p>
+<ul>
+<li><p><code>用户设置</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 配置对.vue.html文件中的js代码段进行检测</span><br><span class="line">  &quot;eslint.validate&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &quot;html&quot;,</span><br><span class="line">    &quot;vue&quot;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;language&quot;: &quot;html&quot;,</span><br><span class="line">      &quot;autoFix&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;language&quot;: &quot;vue&quot;,</span><br><span class="line">      &quot;autoFix&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  // 每次保存的时候将代码按eslint格式进行修复</span><br><span class="line">  &quot;eslint.autoFixOnSave&quot;: true,</span><br><span class="line">  // 每次保存的时候自动格式化</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,</span><br><span class="line">  // 让prettier使用eslint的代码格式进行校验</span><br><span class="line">  &quot;prettier.eslintIntegration&quot;: true,</span><br><span class="line">  // 声明结尾使用分号(默认true)</span><br><span class="line">  &quot;prettier.semi&quot;: false,</span><br><span class="line">  // 使用单引号替代双引号</span><br><span class="line">  &quot;prettier.singleQuote&quot;: true,</span><br><span class="line">  // 多行使用拖尾逗号（默认none）</span><br><span class="line">  &quot;prettier.trailingComma&quot;: &quot;all&quot;,</span><br><span class="line">  // 让函数(名)和后面的括号之间加个空格</span><br><span class="line">  &quot;javascript.format.insertSpaceBeforeFunctionParenthesis&quot;: true,</span><br><span class="line">  // #这个按用户自身习惯选择</span><br><span class="line">  &quot;vetur.format.defaultFormatter.html&quot;: &quot;js-beautify-html&quot;,</span><br><span class="line">  // #让vue中的js按编辑器自带的ts格式进行格式化</span><br><span class="line">  //   &quot;vetur.format.defaultFormatter.js&quot;: &quot;vscode-typescript&quot;,</span><br><span class="line">  &quot;vetur.format.defaultFormatterOptions&quot;: &#123;</span><br><span class="line">    &quot;js-beautify-html&quot;: &#123;</span><br><span class="line">      &quot;wrap_attributes&quot;: &quot;auto&quot;</span><br><span class="line">      // #vue组件中html代码格式化样式</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xinc127.github.io/2019/01/21/vscode-eslint-prettier/" data-id="cjr65rq200005xblxt7vmkypb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-es6-module" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/19/es6-module/" class="article-date">
@@ -175,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/19/es6-module/" data-id="cjr5rhrls0001jolxbfu4vosb" class="article-share-link">Share</a>
+      <a data-url="https://xinc127.github.io/2019/01/19/es6-module/" data-id="cjr65rq1l0000xblxso41lpou" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -237,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/18/vue3-vw/" data-id="cjr5rhrlz0006jolx3eud70ji" class="article-share-link">Share</a>
+      <a data-url="https://xinc127.github.io/2019/01/18/vue3-vw/" data-id="cjr65rq240009xblxq4gbxvem" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -316,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/17/guidance/" data-id="cjr5rhrlw0004jolxczeh9aqv" class="article-share-link">Share</a>
+      <a data-url="https://xinc127.github.io/2019/01/17/guidance/" data-id="cjr65rq1y0004xblxg30pcp69" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
@@ -419,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/17/viewports/" data-id="cjr5rhrly0005jolxefkyt7tw" class="article-share-link">Share</a>
+      <a data-url="https://xinc127.github.io/2019/01/17/viewports/" data-id="cjr65rq210006xblxlszjcbdi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -463,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/16/article/" data-id="cjr5rhrln0000jolxnegpom06" class="article-share-link">Share</a>
+      <a data-url="https://xinc127.github.io/2019/01/16/article/" data-id="cjr65rq1r0001xblxpx7r7vbp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
@@ -495,7 +557,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
     </div>
   </div>
 
@@ -505,7 +567,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
     </div>
   </div>
 
@@ -527,6 +589,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/21/vscode-eslint-prettier/">VSCode配置eslint和prettier</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/19/es6-module/">es6-module</a>
           </li>
         
@@ -540,10 +606,6 @@
         
           <li>
             <a href="/2019/01/17/viewports/">viewports教程_学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/16/article/">第一篇文章</a>
           </li>
         
       </ul>

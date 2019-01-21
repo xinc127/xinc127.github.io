@@ -5,15 +5,20 @@
   
 
   
-  <title>这是一个博客网站</title>
+  <title>es6-module | 这是一个博客网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="这是一个博客网站">
-<meta property="og:url" content="https://xinc127.github.io/index.html">
+  <meta name="description" content="Module 的语法ES6之前的模块解决方案有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。 ES6模块的设计思想是尽量静态化，在编译时就能确定模块之前的依赖关系，以及输入输出变量。CommonJS和AMD模块，都只能在运行时确定这些东西。比如，CommonJS模块就是对象，输入时必须查找对象的属性。 12345678// CommonJS模块let &amp;#123; stat, ex">
+<meta name="keywords" content="javascript,es6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6-module">
+<meta property="og:url" content="https://xinc127.github.io/2019/01/19/es6-module/index.html">
 <meta property="og:site_name" content="这是一个博客网站">
+<meta property="og:description" content="Module 的语法ES6之前的模块解决方案有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。 ES6模块的设计思想是尽量静态化，在编译时就能确定模块之前的依赖关系，以及输入输出变量。CommonJS和AMD模块，都只能在运行时确定这些东西。比如，CommonJS模块就是对象，输入时必须查找对象的属性。 12345678// CommonJS模块let &amp;#123; stat, ex">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-21T03:18:43.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="这是一个博客网站">
+<meta name="twitter:title" content="es6-module">
+<meta name="twitter:description" content="Module 的语法ES6之前的模块解决方案有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。 ES6模块的设计思想是尽量静态化，在编译时就能确定模块之前的依赖关系，以及输入输出变量。CommonJS和AMD模块，都只能在运行时确定这些东西。比如，CommonJS模块就是对象，输入时必须查找对象的属性。 12345678// CommonJS模块let &amp;#123; stat, ex">
   
     <link rel="alternate" href="/atom.xml" title="这是一个博客网站" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-es6-module" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-es6-module" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/19/es6-module/" class="article-date">
   <time datetime="2019-01-19T15:23:25.000Z" itemprop="datePublished">2019-01-19</time>
@@ -79,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/19/es6-module/">es6-module</a>
+    <h1 class="article-title" itemprop="name">
+      es6-module
     </h1>
   
 
@@ -183,299 +186,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-vue3-vw" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/18/vue3-vw/" class="article-date">
-  <time datetime="2019-01-18T02:15:57.000Z" itemprop="datePublished">2019-01-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端学习/">前端学习</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/vue3-vw/">vue-cli3 移动端适配--vw解决方案</a>
-    </h1>
+    <a href="/2019/01/18/vue3-vw/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue-cli3 移动端适配--vw解决方案</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用Vue-cli3创建项目"><a href="#使用Vue-cli3创建项目" class="headerlink" title="使用Vue-cli3创建项目"></a>使用Vue-cli3创建项目</h1><blockquote>
-<p>Vue CLI3的包名称变为了 <code>@vue/cli</code></p>
-</blockquote>
-<p>全局安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue-cli</span><br></pre></td></tr></table></figure>
-<p>创建新项目命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create &lt;项目名&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="安装配置PostCSS插件"><a href="#安装配置PostCSS插件" class="headerlink" title="安装配置PostCSS插件"></a>安装配置PostCSS插件</h1><ol>
-<li>安装插件</li>
-</ol>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i postcss-aspect-ratio-mini postcss-px-to-viewport postcss-write-svg postcss-preset-env postcss-viewport-units cssnano cssnano-preset-advanced postcss-import postcss-viewport-units  --save-dev</span><br></pre></td></tr></table></figure>
-<p>   其中<code>postcss-cssnext</code>变更为<code>post-preset-env</code></p>
-<p>   安装结果如下：</p>
-<p>   <img src="https://i.loli.net/2019/01/18/5c413fc22bf8b.png" alt="1547778601670"></p>
-<ol start="2">
-<li>配置PostCSS插件</li>
-</ol>
-<p>   在根目录<code>post.config.js</code>文件中</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-import'</span>), <span class="comment">// 解决@import引入路径问题</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-url'</span>), <span class="comment">// 该插件用来处理图片、字体等文件引入路径问题</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-aspect-ratio-mini'</span>), <span class="comment">// 宽高比</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-write-svg'</span>)(&#123; <span class="attr">utf8</span>: <span class="literal">false</span> &#125;), <span class="comment">// 移动端1px问题</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-preset-env'</span>), <span class="comment">// CSS的新特性 (其中包含autoprefixer)</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-px-to-viewport'</span>)(&#123; <span class="comment">// px转vw工具</span></span><br><span class="line">      viewportWidth: <span class="number">750</span>, <span class="comment">// 视窗的宽度，对应的是我们设计稿的宽度，一般是750</span></span><br><span class="line">      viewportHeight: <span class="number">1334</span>, <span class="comment">// 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置</span></span><br><span class="line">      unitPrecision: <span class="number">3</span>, <span class="comment">// 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）</span></span><br><span class="line">      viewportUnit: <span class="string">'vw'</span>, <span class="comment">// 指定需要转换成的视窗单位，建议使用vw</span></span><br><span class="line">      selectorBlackList: [<span class="string">'.ignore'</span>, <span class="string">'.hairlines'</span>], <span class="comment">// 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名</span></span><br><span class="line">      minPixelValue: <span class="number">1</span>, <span class="comment">// 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值</span></span><br><span class="line">      mediaQuery: <span class="literal">false</span> <span class="comment">// 允许在媒体查询中转换`px`</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'cssnano'</span>)(&#123; <span class="comment">// 用来压缩和清理CSS代码</span></span><br><span class="line">      preset: <span class="string">"advanced"</span>, </span><br><span class="line">      autoprefixer: <span class="literal">false</span>, </span><br><span class="line">      <span class="string">"postcss-zindex"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>大漠老师 <a href="https://www.w3cplus.com/mobile/vw-layout-in-vue.html" target="_blank" rel="noopener">如何在Vue项目中使用vw实现移动端适配</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/18/vue3-vw/" data-id="cjr5rhrlz0006jolx3eud70ji" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-guidance" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/17/guidance/" class="article-date">
-  <time datetime="2019-01-17T09:24:43.000Z" itemprop="datePublished">2019-01-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建博客/">搭建博客</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/17/guidance/">Hexo博客使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h1><p>根目录下命令行输入<code>hexo new &lt;模板&gt; &lt;文章名&gt;</code> 新建文章</p>
-<p>其中的<code>模板</code>在<code>scaffolds</code>文件夹中，默认有三种模板<code>post</code>、<code>draft</code>、<code>page</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>功能</th>
-<th>路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>post</td>
-<td>新建文章</td>
-<td>/source/_posts</td>
-</tr>
-<tr>
-<td>draft</td>
-<td>新建草稿</td>
-<td>/source/_draft</td>
-</tr>
-<tr>
-<td>page</td>
-<td>新建页面（标签页、分类页等）</td>
-<td>/source/</td>
-</tr>
-</tbody>
-</table>
-<p>通常使用<code>hexo new post &lt;title&gt;</code>新建文章，这里的<code>&lt;titel&gt;</code>不是文章名字。</p>
-<p>例如新建一篇文章 <code>hexo new post ariticles</code></p>
-<p>然后在<code>source/_posts</code>文件夹下面多了一个<code>articles.md</code>文件</p>
-<p><img src="/home/chaoxin/.config/Typora/typora-user-images/1547718477899.png" alt="1547718477899"></p>
-<p>打开文件后（使用的Typora编辑器打开）</p>
-<p><img src="/home/chaoxin/.config/Typora/typora-user-images/1547718570227.png" alt="1547718570227"></p>
-<p>在其中配置文章相关内容，标签、分类等。其中<code>title</code>为文章发表后的文章页面显示的标题。</p>
-<p>而<code>.md</code>文件的名字，将作为文章的链接地址显示，例如本篇的文件名：<code>articles.md</code>，那么本篇文章的地址为<code>http://xxx.xxx/ariticles.html</code></p>
-<h1 id="文章模板"><a href="#文章模板" class="headerlink" title="文章模板"></a>文章模板</h1><p>在新建文章的<code>post</code>参数就是模板的名称，在使用<code>hexo new post &lt;title&gt;</code>命令新建文章时，系统会自动在<code>scaffolds</code>文件夹下寻找<code>post</code>文件，根据该配置文件生新的<code>.md</code>文件</p>
-<h1 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/17/guidance/" data-id="cjr5rhrlw0004jolxczeh9aqv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-viewports" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/17/viewports/" class="article-date">
-  <time datetime="2019-01-17T07:16:13.000Z" itemprop="datePublished">2019-01-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端学习/">前端学习</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/17/viewports/">viewports教程_学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概念-设备的pixels和CSS的pixels"><a href="#概念-设备的pixels和CSS的pixels" class="headerlink" title="概念:  设备的pixels和CSS的pixels"></a>概念:  设备的pixels和CSS的pixels</h1><p>设备pixels大多数情况下可以通过screen.width/height上获取到。</p>
-<p>当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度 <em> 2、高度 </em> 2，面积扩大了2 * 2.</p>
-<blockquote>
-<p>用户缩放时，浏览器自动使CSS的pixels缩放</p>
-</blockquote>
-<h1 id="100-缩放"><a href="#100-缩放" class="headerlink" title="100% 缩放"></a>100% 缩放</h1><blockquote>
-<p>在缩放级别为100%时，1单位的CSS的pixels是严格相等于1单位的设备pixels</p>
-</blockquote>
-<h1 id="屏幕尺寸-Screen-size"><a href="#屏幕尺寸-Screen-size" class="headerlink" title="屏幕尺寸 Screen size"></a>屏幕尺寸 Screen size</h1><p>screen.width/height</p>
-<ul>
-<li><p>用户屏幕的完整大小</p>
-</li>
-<li><p>显示器特性与浏览器无关</p>
-</li>
-</ul>
-<h1 id="浏览器尺寸-Window-size"><a href="#浏览器尺寸-Window-size" class="headerlink" title="浏览器尺寸 Window size"></a>浏览器尺寸 Window size</h1><p>window.innerWidth/Height</p>
-<ul>
-<li>包含滚动条尺寸浏览器的完整大小</li>
-</ul>
-<h1 id="滚动移位-Scrolling-offset"><a href="#滚动移位-Scrolling-offset" class="headerlink" title="滚动移位 Scrolling offset"></a>滚动移位 Scrolling offset</h1><p>window.pageX/YOffset</p>
-<ul>
-<li>页面的位移</li>
-</ul>
-<p>window.pageXOffset 和 window.pageYOffset，定义了页面（document）的相对于窗口原点的水平和垂直位移。因此可以知道用户将页面滚动了多少。</p>
-<blockquote>
-<p>缩放不影响window.pageX/YOffset的大小</p>
-</blockquote>
-<h1 id="视窗-viewport"><a href="#视窗-viewport" class="headerlink" title="视窗 viewport"></a>视窗 viewport</h1><blockquote>
-<p>决定了页面中最高块状（block）元素： <html> 元素 的大小</html></p>
-</blockquote>
-<p><html>宽度受 viewport 所限制，<html> 元素宽度为 viewport 的100%.</html></html></p>
-<p>通常，一个块级元素占其父级元素的100%宽度。所以<body>的宽度就是其父元素<html>的100%.</html></body></p>
-<ul>
-<li>viewport宽度等于浏览器宽度</li>
-<li>缩放比例100%显示正常，放大浏览器时，viewport变得比网站的宽度更小，对viewport无影响，但页面内容溢出了<html>元素</html></li>
-</ul>
-<p><img src="https://i.loli.net/2019/01/17/5c40471ec8bb0.png" alt="1547714572314"></p>
-<h1 id="页面的宽度-document-width"><a href="#页面的宽度-document-width" class="headerlink" title="页面的宽度 document.width"></a>页面的宽度 document.width</h1><h1 id="度量-viewport"><a href="#度量-viewport" class="headerlink" title="度量 viewport"></a>度量 viewport</h1><p>doucment.documentElement.clientWidth/Height</p>
-<ul>
-<li>viewport 的尺寸</li>
-</ul>
-<p>document.documentElement 就是 <html> 元素：HTML文档的根元素</html></p>
-<p>虽然document.documentElement好像是从<html>元素获取值，但实际上是viewport.通过给<html>元素赋值，再通过docuent.documentElement获取到的值不变。（不建议给<html>元素赋值）</html></html></html></p>
-<blockquote>
-<p>这个特殊的规则只针对这个特殊的情况下，在其余情况下等于元素使用的实际宽度。</p>
-</blockquote>
-<h1 id="两个特性对-two-property-pairs"><a href="#两个特性对-two-property-pairs" class="headerlink" title="两个特性对 two property pairs"></a>两个特性对 two property pairs</h1><p>用来描述viewport尺寸的还有 window.innerWidth/Height</p>
-<p>两者的区别：</p>
-<ul>
-<li>window.innerWidth/Height 包含滚动条</li>
-<li>document.documentElement.clientWidth/Height 不包含</li>
-</ul>
-<h1 id="度量-元素"><a href="#度量-元素" class="headerlink" title="度量  元素"></a>度量 <html> 元素</html></h1><p>document.documentElement.offsetWidth/Height</p>
-<p>用来获取<html>元素的尺寸</html></p>
-<h1 id="事件坐标-Event-coordinates"><a href="#事件坐标-Event-coordinates" class="headerlink" title="事件坐标 Event coordinates"></a>事件坐标 Event coordinates</h1><p>pageX/Y、clientX/Y、screenX/Y分别是</p>
-<ul>
-<li>从<html>原点到事件触发的CSS的pixels</html></li>
-<li>从浏览器（viewport）原点到事件触发的CSS的pixels</li>
-<li>从显示器原点到事件触发的CSS的pixels</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上为桌面浏览器涉及到的一些概念。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/17/viewports/" data-id="cjr5rhrly0005jolxefkyt7tw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-article" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/16/article/" class="article-date">
-  <time datetime="2019-01-16T03:08:49.000Z" itemprop="datePublished">2019-01-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/搭建博客/">搭建博客</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/16/article/">第一篇文章</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2019/01/16/5c3ec915360f3.png" alt="1547610089080">j<strong>截图测试</strong></p>
-<p>上传至smms图床成功!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xinc127.github.io/2019/01/16/article/" data-id="cjr5rhrln0000jolxnegpom06" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         

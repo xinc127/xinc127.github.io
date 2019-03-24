@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.icos?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1、什么是正规表示法 简单说，正规表示法就是处理字符串的方法，他是以行为单位进行字符串的处理行为，正规表示法透过一些特殊符号的辅助，可以让使用者轻易达到【搜寻/删除/取代】某特定子串的处理程序！  正规表示法基本是一种【表示法】，只要工具支持这种表示法，那么该工具就可以用正规表示法来处理字符串。例如 vi、grep、awk、sed 等。但例如 cp、ls 等指令就不支持正规表示法。 2、基础正规表">
+<meta name="keywords" content="linux,grep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正规表示法与文件格式化处理 grep">
+<meta property="og:url" content="https://xinc127.github.io/2019/03/24/grep1/index.html">
+<meta property="og:site_name" content="这是chao博客网站">
+<meta property="og:description" content="1、什么是正规表示法 简单说，正规表示法就是处理字符串的方法，他是以行为单位进行字符串的处理行为，正规表示法透过一些特殊符号的辅助，可以让使用者轻易达到【搜寻/删除/取代】某特定子串的处理程序！  正规表示法基本是一种【表示法】，只要工具支持这种表示法，那么该工具就可以用正规表示法来处理字符串。例如 vi、grep、awk、sed 等。但例如 cp、ls 等指令就不支持正规表示法。 2、基础正规表">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-24T09:54:43.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正规表示法与文件格式化处理 grep">
+<meta name="twitter:description" content="1、什么是正规表示法 简单说，正规表示法就是处理字符串的方法，他是以行为单位进行字符串的处理行为，正规表示法透过一些特殊符号的辅助，可以让使用者轻易达到【搜寻/删除/取代】某特定子串的处理程序！  正规表示法基本是一种【表示法】，只要工具支持这种表示法，那么该工具就可以用正规表示法来处理字符串。例如 vi、grep、awk、sed 等。但例如 cp、ls 等指令就不支持正规表示法。 2、基础正规表">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xinc127.github.io/2019/03/24/grep1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>正规表示法与文件格式化处理 grep | 这是chao博客网站</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这是chao博客网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/03/24/grep1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chaoxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是chao博客网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">正规表示法与文件格式化处理 grep
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-24 16:20:49 / 修改时间：17:54:43" itemprop="dateCreated datePublished" datetime="2019-03-24T16:20:49+08:00">2019-03-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、什么是正规表示法"><a href="#1、什么是正规表示法" class="headerlink" title="1、什么是正规表示法"></a>1、什么是正规表示法</h2><blockquote>
+<p>简单说，正规表示法就是处理字符串的方法，他是以行为单位进行字符串的处理行为，正规表示法透过一些特殊符号的辅助，可以让使用者轻易达到【搜寻/删除/取代】某特定子串的处理程序！</p>
+</blockquote>
+<p>正规表示法基本是一种【表示法】，只要工具支持这种表示法，那么该工具就可以用正规表示法来处理字符串。例如 <code>vi</code>、<code>grep</code>、<code>awk</code>、<code>sed</code> 等。但例如 <code>cp</code>、<code>ls</code> 等指令就不支持正规表示法。</p>
+<h2 id="2、基础正规表示法"><a href="#2、基础正规表示法" class="headerlink" title="2、基础正规表示法"></a>2、基础正规表示法</h2><h3 id="2-1-grep-的基础用法"><a href="#2-1-grep-的基础用法" class="headerlink" title="2.1 grep 的基础用法"></a>2.1 grep 的基础用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> $ grep [-acinv] [--color=auto] &apos;搜寻字符串&apos; filename</span><br><span class="line"> 选项与参数：</span><br><span class="line">-a ：将binary 档案以text 档案的方式搜寻资料</span><br><span class="line">-c ：计算找到&apos;搜寻字串&apos; 的次数</span><br><span class="line">-i ：忽略大小写的不同，所以大小写视为相同</span><br><span class="line">-n ：顺便输出行号</span><br><span class="line">-v ：反向选择，亦即显示出没有&apos;搜寻字串&apos; 内容的那一行！</span><br><span class="line">--color=auto ：可以将找到的关键字部分加上颜色的显示喔！</span><br><span class="line"></span><br><span class="line">范例一：将last当中，有出现root的那一行就取出来； </span><br><span class="line">$ last | grep &apos;root&apos;</span><br><span class="line"></span><br><span class="line">范例二：与范例一相反，只要没有root的就取出！</span><br><span class="line">$ last | grep -v &apos;root&apos;</span><br><span class="line"></span><br><span class="line">范例三：在last的输出讯息中，只要有root就取出，并且仅取第一栏 </span><br><span class="line">$ last | grep &apos;root&apos; |cut -d &apos; &apos; -f1 </span><br><span class="line">#在取出root之后，利用上个指令cut的处理，就能够仅取得第一栏啰！</span><br><span class="line"></span><br><span class="line">范例四：取出/etc/man_db.conf内含MANPATH的那几行 </span><br><span class="line">$ grep --color=auto &apos;MANPATH&apos; /etc/man_db.conf </span><br><span class="line">....(前面省略)... . </span><br><span class="line">MANPATH _MAP /usr/games /usr/share/man</span><br><span class="line"> MANPATH _MAP /opt/bin /opt/man</span><br><span class="line"> MANPATH _MAP /opt/sbin /opt/man</span><br><span class="line"> #神奇的是，如果加上--color=auto的选项，找到的关键字部分会用特殊颜色显示喔！</span><br></pre></td></tr></table></figure>
+<p><strong><code>gerp</code> 可以解析一行文字，取得关键字，若这行有存在关键字，就会整列出来。</strong></p>
+<h3 id="2-2-grep-基础正规表示法练习"><a href="#2-2-grep-基础正规表示法练习" class="headerlink" title="2.2 grep 基础正规表示法练习"></a>2.2 grep 基础正规表示法练习</h3><ul>
+<li><h4 id="搜寻特定字符"><a href="#搜寻特定字符" class="headerlink" title="搜寻特定字符"></a>搜寻特定字符</h4></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ grep -n &apos;the&apos; regular_express.txt</span><br><span class="line">8:I can&apos;t finish the test.</span><br><span class="line">12: the symbol &apos;*&apos; is represented as start.</span><br><span class="line">15:You are the best is mean you are the no. 1.</span><br><span class="line">16:The world &lt;Happy&gt; is the same with &quot;glad&quot;.</span><br><span class="line">18:google is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
+<p><strong>反向选择</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -vn &apos;the&apos; regulary_express.txt</span><br></pre></td></tr></table></figure>
+<p><strong>不区分大小写</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ grep -in &apos;the&apos; regulary_express.txt</span><br><span class="line">8:I can&apos;t finish the test.</span><br><span class="line">9:Oh! The soup taste good.</span><br><span class="line">12: the symbol &apos;*&apos; is represented as start.</span><br><span class="line">14: The gd software is a library for drafting programs.</span><br><span class="line">15:You are the best is mean you are the no. 1.</span><br><span class="line">16: The world &lt;Happy&gt; is the same with &quot;glad&quot;.</span><br><span class="line">18:google is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="利用中括号-来搜寻集合字元"><a href="#利用中括号-来搜寻集合字元" class="headerlink" title="利用中括号 [] 来搜寻集合字元"></a>利用中括号 [] 来搜寻集合字元</h4><p>如果想要搜寻 <code>tast</code> 或 <code>test</code> 这两个单字时</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ grep -n &apos;t[ae]st&apos; regulay_express.txt</span><br><span class="line">8:I can&apos;t finish the test .</span><br><span class="line">9:Oh! The soup tast e good.</span><br></pre></td></tr></table></figure>
+<p><strong>其实 [] 里面无论有几个字元，都仅代表某一个字元 </strong></p>
+<p>集合字元的反向选择[^] </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;[^g]oo&apos; regular_express.txt </span><br><span class="line">2:apple is my favorite foo d.</span><br><span class="line">3: Foo tball game is not use feet only.</span><br><span class="line">18:google is the best too ls for search keyword.</span><br><span class="line">19:g oooooo gle yes!</span><br></pre></td></tr></table></figure>
+<p>假设我oo 前面不想要有小写字元，所以，我可以这样写[^abcd….z]oo ， 但是这样似乎不怎么方便，由于小写字元的ASCII 上编码的顺序是连续的， 因此，我们可以将之简化为底下这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;[^az]oo&apos; regular_express.txt </span><br><span class="line">3: Foo tball game is not use feet only.</span><br></pre></td></tr></table></figure>
+<p>也就是说，当我们在一组集合字元中，如果该字元组是连续的，例如大写英文/小写英文/数字等等， 就可以使用[az],[AZ],[0-9]等方式来书写，那么如果我们的要求字串是数字与英文呢？呵呵！就将他全部写在一起，变成：[a-zA-Z0-9]。</p>
+<ul>
+<li><h4 id="行首与行尾字元"><a href="#行首与行尾字元" class="headerlink" title="行首与行尾字元^ $"></a>行首与行尾字元^ $</h4><p>定位以字符 <code>the</code> 开头</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;^the&apos; regular_express.txt </span><br><span class="line">12: the symbol &apos;*&apos; is represented as start.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="任意一个字元-与重复字元"><a href="#任意一个字元-与重复字元" class="headerlink" title="任意一个字元. 与重复字元"></a>任意一个字元. 与重复字元</h4><p>**. (小数点)：代表『一定有一个任意字元』的意思；</p>
+</li>
+<li><p>(星星号)：代表『重复前一个字元， 0 到无穷多次』的意思，为组合形态**</p>
+</li>
+<li><h4 id="限定连续RE-字符范围"><a href="#限定连续RE-字符范围" class="headerlink" title="限定连续RE 字符范围{}"></a>限定连续RE 字符范围{}</h4></li>
+</ul>
+<p>因为{与}的符号在shell是有特殊意义的，因此，我们必须要使用跳脱字符\来让他失去特殊意义才行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;o\&#123;2\&#125;&apos; regular_express.txt </span><br><span class="line">1:&quot;Open Source&quot; is ag oo d mechanism to develop programs.</span><br><span class="line">2:apple is my favorite f oo d.</span><br><span class="line">3:F oo tball game is not use feet only.</span><br><span class="line">9:Oh! The soup taste g oo d.</span><br><span class="line">18:g oo gle is the best t oo ls for search keyword.</span><br><span class="line">19:g oooooo gle yes!</span><br></pre></td></tr></table></figure>
+<p>假设我们要找出g 后面接2 到5 个o ，然后再接一个g 的字串，他会是这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;go\&#123;2,5\&#125;g&apos; regular_express.txt </span><br><span class="line">18: goog le is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
+<p>如果我想要的是2 个o 以上的goooo….g 呢？除了可以是gooo*g ，也可以是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;go\&#123;2,\&#125;g&apos; regular_express.txt </span><br><span class="line">18: goog le is the best tools for search keyword.</span><br><span class="line">19: goooooog le yes!</span><br></pre></td></tr></table></figure>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><p><a href="http://linux.vbird.org/linux_basic/0330regularex.php#grep" target="_blank" rel="noopener">鸟哥的Linux 私房菜</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/grep/" rel="tag"># grep</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/01/scroll/" rel="next" title="scroll">
+                <i class="fa fa-chevron-left"></i> scroll
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/24/grep/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4" alt="chaoxin">
+            
+              <p class="site-author-name" itemprop="name">chaoxin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、什么是正规表示法"><span class="nav-number">1.</span> <span class="nav-text">1、什么是正规表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基础正规表示法"><span class="nav-number">2.</span> <span class="nav-text">2、基础正规表示法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-grep-的基础用法"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 grep 的基础用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-grep-基础正规表示法练习"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 grep 基础正规表示法练习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#搜寻特定字符"><span class="nav-number">2.2.1.</span> <span class="nav-text">搜寻特定字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用中括号-来搜寻集合字元"><span class="nav-number">2.2.2.</span> <span class="nav-text">利用中括号 [] 来搜寻集合字元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行首与行尾字元"><span class="nav-number">2.2.3.</span> <span class="nav-text">行首与行尾字元^ $</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任意一个字元-与重复字元"><span class="nav-number">2.2.4.</span> <span class="nav-text">任意一个字元. 与重复字元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限定连续RE-字符范围"><span class="nav-number">2.2.5.</span> <span class="nav-text">限定连续RE 字符范围{}</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考地址"><span class="nav-number">3.</span> <span class="nav-text">参考地址</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chaoxin</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">17k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">16 分钟</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

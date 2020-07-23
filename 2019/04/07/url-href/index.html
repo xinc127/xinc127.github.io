@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.icos?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="URI 和 URL 与 URI(统一资源标识符) 相比，我们应该比较熟悉 URL (统一资源定位符)。 URL 正是我们使用浏览器时候输入的网页地址，比如，下面 http://www.google.com 就是 URL。  URI 统一资源标识符URI 是 Uniform Resource Identifier 的缩写。  Uniform  规定统一的格式方便可方便处理多种不同类型的资源。比如常用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈 URI、URL、src、href">
+<meta property="og:url" content="https://xinc127.github.io/2019/04/07/url-href/index.html">
+<meta property="og:site_name" content="这是chao博客网站">
+<meta property="og:description" content="URI 和 URL 与 URI(统一资源标识符) 相比，我们应该比较熟悉 URL (统一资源定位符)。 URL 正是我们使用浏览器时候输入的网页地址，比如，下面 http://www.google.com 就是 URL。  URI 统一资源标识符URI 是 Uniform Resource Identifier 的缩写。  Uniform  规定统一的格式方便可方便处理多种不同类型的资源。比如常用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://xinc127.github.io/2019/04/07/url-href/chaoxin/my_blog/source/_posts/url-href/1554641121294.png">
+<meta property="og:updated_time" content="2020-07-23T02:54:21.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈 URI、URL、src、href">
+<meta name="twitter:description" content="URI 和 URL 与 URI(统一资源标识符) 相比，我们应该比较熟悉 URL (统一资源定位符)。 URL 正是我们使用浏览器时候输入的网页地址，比如，下面 http://www.google.com 就是 URL。  URI 统一资源标识符URI 是 Uniform Resource Identifier 的缩写。  Uniform  规定统一的格式方便可方便处理多种不同类型的资源。比如常用">
+<meta name="twitter:image" content="https://xinc127.github.io/2019/04/07/url-href/chaoxin/my_blog/source/_posts/url-href/1554641121294.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://xinc127.github.io/2019/04/07/url-href/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>浅谈 URI、URL、src、href | 这是chao博客网站</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这是chao博客网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/04/07/url-href/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chaoxin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是chao博客网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅谈 URI、URL、src、href
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-07 20:16:44" itemprop="dateCreated datePublished" datetime="2019-04-07T20:16:44+08:00">2019-04-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-23 10:54:21" itemprop="dateModified" datetime="2020-07-23T10:54:21+08:00">2020-07-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="URI-和-URL"><a href="#URI-和-URL" class="headerlink" title="URI 和 URL"></a>URI 和 URL</h1><p> 与 URI(统一资源标识符) 相比，我们应该比较熟悉 URL (统一资源定位符)。</p>
+<p>URL 正是我们使用浏览器时候输入的网页地址，比如，下面 <a href="http://www.google.com" target="_blank" rel="noopener">http://www.google.com</a> 就是 URL。</p>
+<p><img src="/2019/04/07/url-href/chaoxin/my_blog/source/_posts/url-href/1554641121294.png" alt="1554641121294"></p>
+<h3 id="URI-统一资源标识符"><a href="#URI-统一资源标识符" class="headerlink" title="URI 统一资源标识符"></a>URI 统一资源标识符</h3><p><code>URI</code> 是 Uniform Resource Identifier 的缩写。</p>
+<ul>
+<li><p><strong>Uniform</strong></p>
+<p> 规定统一的格式方便可方便处理多种不同类型的资源。比如常用的 <code>HTTP</code> <code>HTTPS</code> 协议，除此之外，还有 <code>ftp</code>、<code>mailto</code>、<code>telnet</code>、<code>file</code> 等。</p>
+</li>
+<li><p><strong>Resource</strong></p>
+<p>资源的定义是“可以标识的任何东西”。不仅仅是文档文件、图片或者其他服务等能够区别于其他类型的，全都可以作为资源。另外，资源不仅可以是单一的，也可以是多数的集合体。</p>
+</li>
+<li><p><strong>Identifier</strong></p>
+<p>表示可标识的对象，也称为标识符。</p>
+</li>
+</ul>
+<p>综上， <code>URI</code> 就是由某个协议方案表示的资源的定位标识符。该协议方案就是访问资源所使用的协议类型。</p>
+<p>而 <code>URL</code> 表示资源的地点(互联网所处的位置)，可以将其理解为是一种 <code>URI</code> 。</p>
+<h3 id="URI-格式"><a href="#URI-格式" class="headerlink" title="URI 格式"></a>URI 格式</h3><p>表示指定的 <code>URI</code> ，要使用涵盖全部信息的绝对 URI 、绝对 URL 以及相对 URL 。相对 URL ，是指从浏览器中基本 URI 处指定的 URL ，比如 /assets/logo.png 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">http://user:pass@www.example.jp:80/dir/index.html?uid=1#ch1</span><br><span class="line"></span><br><span class="line">http: 协议方案名，指定协议名不区分大小写，最后附加上冒号(:)；</span><br><span class="line">urer:pass 登录信息(可选)；</span><br><span class="line">www.example.jp 服务器地址，可以使这种需要 dns 解析的地址，也可以是 ip 地址；</span><br><span class="line">80 服务器端口号(可选);</span><br><span class="line">/dir/index.html 带层次的文件路径；</span><br><span class="line">?uid=1 查询字符串；</span><br><span class="line"><span class="meta">#</span>ch1 片段标识符；</span><br></pre></td></tr></table></figure>
+<h1 id="href-和-src"><a href="#href-和-src" class="headerlink" title="href 和 src"></a>href 和 src</h1><p>两者通常都是用来外部资源的引入。</p>
+<p>它们的区别在于，<strong><code>src</code> 用来代替标签元素的内容，而 <code>href</code> 是建立标签元素和外部资源的联系。</strong></p>
+<h3 id="href-Hypertext-Reference-超文本引用"><a href="#href-Hypertext-Reference-超文本引用" class="headerlink" title="href(Hypertext Reference) 超文本引用"></a>href(Hypertext Reference) 超文本引用</h3><p>这个属性指定 web 资源的位置，从而定义了当前元素或当前文档与目标锚点或目标资源之间的联系。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="string">"style.css"</span> ref=<span class="string">"stylesheet"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>浏览器知道这是个样式表文件，html 的解析和渲染不会暂停，css 文件的加载是同步进行的，这不同于在 style 标签内的内置样式，用 @import 添加的样式是在页面加载完成之后再加载的，这会导致页面因重新渲染而闪烁。</p>
+<h3 id="src-Source-源"><a href="#src-Source-源" class="headerlink" title="src(Source) 源"></a>src(Source) 源</h3><p>这个属性将资源嵌入当前元素所在位置。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"script.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当浏览器解析到这句代码时候，页面的加载和解析会暂停直到浏览器拿到并执行完这个 js 文件。这就像是把 js 文件里面的内容全部注入到这个 script 标签中，类似与 img, img 标签就是一个空的标签，它的内容由 src 这个属性定义，浏览器会暂停加载直到图片加载完成。这也就是为什么将 js 文件加载放置到 body 最后的原因。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li>《图解 HTPP》</li>
+<li><a href="https://stackoverflow.com/questions/3395359/difference-between-src-and-href" target="_blank" rel="noopener">Difference between SRC and HREF</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/07/angularjs/" rel="next" title="angularjs && ionic1 知识点总结">
+                <i class="fa fa-chevron-left"></i> angularjs && ionic1 知识点总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/TypeScript/" rel="prev" title="TypeScript 学习分享">
+                TypeScript 学习分享 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4" alt="chaoxin">
+            
+              <p class="site-author-name" itemprop="name">chaoxin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#URI-和-URL"><span class="nav-number">1.</span> <span class="nav-text">URI 和 URL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URI-统一资源标识符"><span class="nav-number">1.0.1.</span> <span class="nav-text">URI 统一资源标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URI-格式"><span class="nav-number">1.0.2.</span> <span class="nav-text">URI 格式</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#href-和-src"><span class="nav-number">2.</span> <span class="nav-text">href 和 src</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#href-Hypertext-Reference-超文本引用"><span class="nav-number">2.0.1.</span> <span class="nav-text">href(Hypertext Reference) 超文本引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#src-Source-源"><span class="nav-number">2.0.2.</span> <span class="nav-text">src(Source) 源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chaoxin</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">25k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">23 分钟</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -167,7 +167,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -178,7 +178,7 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -321,20 +321,807 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2020/03/20/TypeScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chaoxin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是chao博客网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/03/20/TypeScript/" class="post-title-link" itemprop="url">TypeScript 学习分享</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-20 17:51:14" itemprop="dateCreated datePublished" datetime="2020-03-20T17:51:14+08:00">2020-03-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-23 10:56:27" itemprop="dateModified" datetime="2020-07-23T10:56:27+08:00">2020-07-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="TypeScript-是什么"><a href="#TypeScript-是什么" class="headerlink" title="TypeScript 是什么"></a>TypeScript 是什么</h3><p>对于不熟悉 TypeScript  的人来说，这是一种在 JavaScript 之上添加类型语法的语言，可以通过称为<em>静态类型检查</em>的过程对其进行分析。这种类型检查可以在我们运行代码之前进行告诉我们有关错误（例如错别字和值）的潜在信息<code>null</code>，<code>undefined</code>。不仅如此，类型分析还可以为 TypeScript 和 JavaScript 提供可靠的编辑体验，并为诸如代码完成，全部引用，快速修复和重构之类的操作提供强大支持。</p>
+<blockquote>
+<p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.</p>
+</blockquote>
+<p>TypeScript 是一个编译到纯 JavaScript 的有类型定义的JS超集。</p>
+<p>TS遵循当前以及未来出现的ECMAScript规范。TS不仅能兼容现有的JavaScript 代码，它也拥有兼容未来版本的JavaScript的能力。大多数TS的新增特性 都是基于未来的JavaScript提案，这意味着许多TS代码在将来很有可能会变成ECMA的标准。</p>
+<p><img src="/2020/03/20/TypeScript/image-20200317175339818.png" alt="image-20200317175339818" style="zoom:33%;"></p>
+<h4 id="安装TypeScript"><a href="#安装TypeScript" class="headerlink" title="安装TypeScript"></a>安装TypeScript</h4><ul>
+<li>通过npm安装</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>以上命令会在全局环境下安装<code>tsc</code>命令</p>
+<p>编译一个 TypeScript 文件也很简单</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc hello.ts</span><br></pre></td></tr></table></figure>
+<p>我们约定使用 TypeScript 编写的文件以<code>ts</code>后缀结尾</p>
+<h4 id="Vscode-配置自动编译-ts-文件"><a href="#Vscode-配置自动编译-ts-文件" class="headerlink" title="Vscode 配置自动编译 .ts 文件"></a>Vscode 配置自动编译 .ts 文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --init  // 生成 tsconfig.json 配置文件</span><br></pre></td></tr></table></figure>
+<p>任务 – 运行任务  监视 tsconfig.json</p>
+<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 'xxx: number' 表示声明一个number类型</span></span><br><span class="line"><span class="keyword">const</span> num: number = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明一个函数的参数类型(number以及any)和返回值(void)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params">arg1: number, arg2: any</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="comment">// todo</span></span><br><span class="line">&#125;</span><br><span class="line">fn(num, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明一个接口</span></span><br><span class="line">interface IPerson &#123;</span><br><span class="line">    name: string <span class="comment">// IPerson需要包含一个name属性，类型是string</span></span><br><span class="line">    age: number <span class="comment">// IPerson需要包含一个age属性，类型是number</span></span><br><span class="line">    family: string[] <span class="comment">// IPerson需要包含一个family属性，类型是数组，数组里面都是string类型的数据</span></span><br><span class="line">    sex?: <span class="string">'男'</span> | <span class="string">'女'</span> <span class="comment">// IPerson可选一个sex属性，值为'男'或者'女'或者undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用IPerson接口定义一个对象，如果对象不符合IPerson的定义，编译器会飘红报错</span></span><br><span class="line"><span class="keyword">const</span> person: IPerson = &#123;</span><br><span class="line">    name: <span class="string">'小王'</span>,</span><br><span class="line">    age: <span class="number">12</span>,</span><br><span class="line">    family: [<span class="string">'爹'</span>, <span class="string">'娘'</span>],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// type类似interface，以下写法等同用interface声明IPerson</span></span><br><span class="line">type IPerson2 = &#123;</span><br><span class="line">    name: string</span><br><span class="line">    age: number</span><br><span class="line">    family: string[]</span><br><span class="line">    sex?: <span class="string">'男'</span> | <span class="string">'女'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 因此可以直接定义过来</span></span><br><span class="line"><span class="keyword">const</span> person2: IPerson2 = person</span><br></pre></td></tr></table></figure>
+<p>“需要写额外的代码，增加代码量，”</p>
+<p>一般情况下，ts需要编译成js后运行，编译后是这样的，通过对比，你可以发现它去掉了所有ts的代码</p>
+<p>那么学习它的好处是什么？</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>代码的健壮性，提高容错率</li>
+</ul>
+<p>首先ts定义一个函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface IArgs &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">agr1: string, arg2: <span class="string">'a'</span>|<span class="string">'b'</span>, arg3: IArgs</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同事小明这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foo(&apos;abc&apos;, &apos;c&apos;, &#123;</span><br><span class="line">  name: &apos;xiaoming&apos;,</span><br><span class="line">  age: 18,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>文档提示</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 一个方法：生成错误提示信息</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>message 提示信息，比如`you have a error`</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number | string&#125;</span> </span>code 错误码，数字和字符都行</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>type 类型，请写`demo1`或者`demo2`</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * [还不懂？点这里吧](https://www.google.com)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * ```js</span></span><br><span class="line"><span class="comment"> * // demo</span></span><br><span class="line"><span class="comment"> * genErrMsg('demo', 10086)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *</span></span><br></pre></td></tr></table></figure>
+<p> */<br>export function genErrMsg (message: string, code: number | string, type?: (‘demo1’ | ‘demo2’)): string {<br>    return (message || <code>网络繁忙，请稍候再试</code>) + (code ? <code>(${code})</code> : <code></code>)<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在完善的一些lib库中，体验更佳，比如常用的`jquery`</span><br><span class="line">通过 `@type` 声明文件来实现，首先安装</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">npm i @types/jquery --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>粗心大意</li>
+</ul>
+<p>阅读以下代码，<strong>请问分割线以下的代码哪些地方有bug？</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用场景三</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> foooo = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> fooo = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> fooooooo = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> foo = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> foooooo = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> test = <span class="number">12</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  fn1 () &#123;&#125;,</span><br><span class="line">  fn2 () &#123;&#125;,</span><br><span class="line">  fn4 () &#123;&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*************** 分割线以下的代码有哪些地方有bug？ **************** */</span></span><br><span class="line"></span><br><span class="line">obj.fn3()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.leg(fooooo)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(tast)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>隐藏的问题</li>
+</ul>
+<p>阅读以下代码，提问：<strong>以下代码有几处bug</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> utils <span class="keyword">from</span> <span class="string">'./utils'</span></span><br><span class="line"></span><br><span class="line">utils.genErrMsg(<span class="number">10086</span>, <span class="string">'this is error'</span>) <span class="comment">// 上面提到的genErrMsg函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dom = <span class="built_in">window</span>.document.getElementById(<span class="string">'foo'</span>)</span><br><span class="line">dom.className = <span class="string">'add'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>接口数据</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">interface IPriceData &#123;</span><br><span class="line">  <span class="comment">/** 标识 */</span></span><br><span class="line">  cbf: string</span><br><span class="line">  <span class="comment">/** id */</span></span><br><span class="line">  id: string</span><br><span class="line">  <span class="comment">/** 市场价格 */</span></span><br><span class="line">  m: string</span><br><span class="line">  <span class="comment">/** 后台价 */</span></span><br><span class="line">  op: string</span><br><span class="line">  <span class="comment">/** 前台价 */</span></span><br><span class="line">  p: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type IPriceDataArr = IPriceData[]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPrice</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Promise参数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>&lt;IPriceDataArr&gt;<span class="function">(<span class="params">(resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    fetch(<span class="string">'https://api.myjson.com/bins/pk3z6'</span>)</span><br><span class="line">      .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">      .then(<span class="function"><span class="params">res</span> =&gt;</span> resolve(res.res))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getPrice()</span><br><span class="line">  .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data[<span class="number">0</span>].cbf)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="TypeScript-语法介绍"><a href="#TypeScript-语法介绍" class="headerlink" title="TypeScript 语法介绍"></a>TypeScript 语法介绍</h3><h4 id="基本类型和扩展类型"><a href="#基本类型和扩展类型" class="headerlink" title="基本类型和扩展类型"></a>基本类型和扩展类型</h4><p><code>Typescript</code>与<code>Javascript</code>共享相同的基本类型，但有一些额外的类型。元组 <code>Tuple</code>、枚举 <code>enum</code></p>
+<p>、<code>Any</code> 与<code>Void</code></p>
+<p><strong>原始数据类型</strong></p>
+<p>JavaScript 的类型分为两种：原始数据类型（Primitive data types）和对象类型（Object types）。</p>
+<p>原始数据类型包括：布尔值、数值、字符串、<code>null</code>、<code>undefined</code> 以及 <a href="http://es6.ruanyifeng.com/#docs/symbol" target="_blank" rel="noopener">ES6 中的新类型 <code>Symbol</code></a>。</p>
+<ul>
+<li>布尔值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 boolean 定义布尔类型</span></span><br><span class="line"><span class="keyword">let</span> isDone: boolean = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用构造函数</span></span><br><span class="line"><span class="keyword">let</span> createByNewBoolean: boolean = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接调用 Boolean 函数</span></span><br><span class="line"><span class="keyword">let</span> createByBoolean: boolean = <span class="built_in">Boolean</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>注意，<code>boolean</code>是 JavaScript 的基本类型，而 <code>Boolean</code> 是 JavaScript 的构造函数。其他基本类型(除了 null 和 undefined 外)都是一样的。</strong></p>
+<ul>
+<li>数值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> decLiteral: number = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">let</span> hexLiteral: number = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="comment">// ES6 中的二进制表示法</span></span><br><span class="line"><span class="keyword">let</span> binaryLiteral: number = <span class="number">0b1010</span>;</span><br><span class="line"><span class="comment">// ES6 中的八进制表示法</span></span><br><span class="line"><span class="keyword">let</span> octalLiteral: number = <span class="number">0o744</span>;</span><br><span class="line"><span class="keyword">let</span> notANumber: number = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">let</span> infinityNumber: number = <span class="literal">Infinity</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName: string = <span class="string">'Tom'</span>;</span><br><span class="line"><span class="keyword">let</span> myAge: number = <span class="number">25</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板字符串</span></span><br><span class="line"><span class="keyword">let</span> sentence: string = <span class="string">`Hello, my name is <span class="subst">$&#123;myName&#125;</span>.</span></span><br><span class="line"><span class="string">I'll be <span class="subst">$&#123;myAge + <span class="number">1</span>&#125;</span> years old next month.`</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>空值</li>
+</ul>
+<p>JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 <code>void</code> 表示没有任何返回值的函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">alertName</span>(<span class="params">name: string</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">	alert(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> unuseable: <span class="keyword">void</span> = <span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>null 和 undefined</li>
+</ul>
+<p><strong>特殊类型</strong></p>
+<p><strong>1. 元祖 Tuple</strong></p>
+<p>数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。</p>
+<p>元祖可以理解为有组织的数组，需要以正确的顺序预定义数据类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> messyArray = [<span class="string">' something'</span>, <span class="number">2</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">const</span> tuple: [number, string, string] = [<span class="number">24</span>, <span class="string">"Indrek"</span> , <span class="string">"Lasn"</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>2. 枚举 enum</strong></p>
+<p>枚举（Enum）类型用于取值被限定在一定范围内的场景，比如一周只能有七天，颜色限定为红绿蓝等。</p>
+<p>枚举成员会被赋值为从 <code>0</code> 开始递增的数字，同时也会对枚举值到枚举名进行反向映射：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">enum Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Sun"</span>] === <span class="number">0</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Mon"</span>] === <span class="number">1</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Tue"</span>] === <span class="number">2</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="string">"Sat"</span>] === <span class="number">6</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">0</span>] === <span class="string">"Sun"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">1</span>] === <span class="string">"Mon"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">2</span>] === <span class="string">"Tue"</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(Days[<span class="number">6</span>] === <span class="string">"Sat"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><strong>3. any</strong></p>
+<p>任意值（Any）用来表示允许赋值为任意类型。</p>
+<p><strong>4. class 类</strong></p>
+<p>传统方法中，JavaScript 通过构造函数实现类的概念，通过原型链实现继承。而在 ES6 中，我们终于迎来了 <code>class</code>（语法糖）。TypeScript 除了实现了所有 ES6 中的类的功能以外，还添加了一些新的用法。</p>
+<p><strong>4.1. 类的概念</strong></p>
+<p>简单的介绍：</p>
+<ul>
+<li>类(Class)：定义了一件事物的抽象特点，包含它的属性和方法</li>
+<li>对象（Object）：类的实例，通过 <code>new</code> 生成</li>
+<li>面向对象（OOP）的三大特性：封装、继承、多态</li>
+<li>封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据</li>
+<li>继承（Inheritance）：子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</li>
+<li>多态（Polymorphism）：由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。比如 <code>Cat</code> 和 <code>Dog</code> 都继承自 <code>Animal</code>，但是分别实现了自己的 <code>eat</code> 方法。此时针对某一个实例，我们无需了解它是 <code>Cat</code> 还是 <code>Dog</code>，就可以直接调用 <code>eat</code> 方法，程序会自动判断出来应该如何执行 <code>eat</code></li>
+<li>存取器（getter &amp; setter）：用以改变属性的读取和赋值行为</li>
+<li>修饰符（Modifiers）：修饰符是一些关键字，用于限定成员或类型的性质。比如 <code>public</code> 表示公有属性或方法</li>
+<li>抽象类（Abstract Class）：抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现</li>
+<li>接口（Interfaces）：不同类之间公有的属性或方法，可以抽象成一个接口。接口可以被类实现（implements）。一个类只能继承自另一个类，但是可以实现多个接口</li>
+</ul>
+<p><strong>4.2. es6 中类的使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6 中类的使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 属性和方法</span></span><br><span class="line"><span class="comment"> * 使用 class 定义类,使用 constructor 定义构造函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  sayHi() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`My name is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 存取器,改变属性的赋值和读取行为</span></span><br><span class="line">  <span class="keyword">get</span> name() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Jack'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> name(value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setters:'</span> + value)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 静态方法</span></span><br><span class="line">  <span class="keyword">static</span> isAnimal(a) &#123;</span><br><span class="line">    <span class="keyword">return</span> a <span class="keyword">instanceof</span> Animal</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> Animal(<span class="string">'Jack'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(a.sayHi())</span><br><span class="line"><span class="built_in">console</span>.log(Animal.isAnimal(a))</span><br><span class="line">a.isAnimal(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// let k = new Animal('Kitty')</span></span><br><span class="line"><span class="comment">// k.name = 'Tom'</span></span><br><span class="line"><span class="comment">// console.log(k.name)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 继承</span></span><br><span class="line"><span class="comment"> * 使用 extends 关键子实现继承, 子类中使用 super 关键子来调用父类的构造函数和方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sayHi() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Wow,'</span> + <span class="keyword">super</span>.sayHi()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let c = new Cat('Tom')</span></span><br><span class="line"><span class="comment">// console.log(c.sayHi())</span></span><br></pre></td></tr></table></figure>
+<p><strong>4.3. TypeScript 中类的用法</strong></p>
+<ul>
+<li><p>修饰符 public private 和 protected</p>
+</li>
+<li><p>参数属性</p>
+<p>修饰符和<code>readonly</code>还可以使用在构造函数参数中，等同于类中定义该属性同时给该属性赋值，使代码更简洁。</p>
+</li>
+<li><p>只读属性 readonly</p>
+<p>只允许出现在属性声明或者构造函数中</p>
+</li>
+<li><p>抽象类 abstract</p>
+</li>
+<li><p>类的类型</p>
+</li>
+</ul>
+<p><strong>类型断言</strong></p>
+<p>用来手动指定一个值的类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 语法</span></span><br><span class="line">&lt;类型&gt;值</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">值 <span class="keyword">as</span> 类型</span><br></pre></td></tr></table></figure>
+<p>当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，我们<strong>只能访问此联合类型的所有类型里共有的属性或方法</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLength</span>(<span class="params">something: string | number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((&lt;string&gt;something).length) &#123;</span><br><span class="line">        return (&lt;string&gt;something).length;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return something.toString().length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。</p>
+<ol>
+<li><p>泛型方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen_func1</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">let</span> gen_func2: &lt;T&gt;(arg: T) =&gt; T = function (arg) &#123;</span><br><span class="line">    return arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用方法</span><br><span class="line">gen_func1&lt;string&gt;('Hello world');</span><br><span class="line">gen_func2('Hello world');</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>泛型与 any</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：带有any参数的方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">any_func</span>(<span class="params">arg: any</span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length);</span><br><span class="line">		<span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：Array泛型方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">array_func</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: Array&lt;T&gt;</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	  <span class="built_in">console</span>.log(arg.length);</span><br><span class="line">		<span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 方法一，打印了arg参数的length属性。因为any可以代替任意类型，所以该方法在传入参数不是数组或者带有length属性对象时，会抛出异常。</span></span><br><span class="line"><span class="comment">// 方法二，定义了参数类型是Array的泛型类型，肯定会有length属性，所以不会抛出异常。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>泛型与接口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Generics_interface&lt;T&gt; &#123;</span><br><span class="line">    (arg: T): T;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func_demo</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> func1: Generics_interface&lt;number&gt; = func_demo;</span><br><span class="line">func1(<span class="number">123</span>);     <span class="comment">// 正确类型的实际参数</span></span><br><span class="line">func1(<span class="string">'123'</span>);   <span class="comment">// 错误类型的实际参数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h4><p><code>Interface</code>， 接口</p>
+<p><code>Type alias</code>，类型别名。</p>
+<ol>
+<li><p>相同点</p>
+<p><strong>都可以用来描述一个对象或函数：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface User &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type User = &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">interface SetUser &#123;</span><br><span class="line">  (name: string, <span class="attr">age</span>: number): <span class="keyword">void</span>;</span><br><span class="line">&#125;</span><br><span class="line">type SetUser = (name: string, <span class="attr">age</span>: number): <span class="keyword">void</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>都允许拓展（extends）：</strong></p>
+</li>
+<li><p>不同点</p>
+<p><strong><code>type</code> 可以而 <code>interface</code> 不行</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本类型别名</span></span><br><span class="line">type Name = string</span><br><span class="line"></span><br><span class="line"><span class="comment">// 联合类型</span></span><br><span class="line">interface Dog &#123;</span><br><span class="line">    wong();</span><br><span class="line">&#125;</span><br><span class="line">interface Cat &#123;</span><br><span class="line">    miao();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Pet = Dog | Cat</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体定义数组每个位置的类型</span></span><br><span class="line">type PetList = [Dog, Pet]</span><br></pre></td></tr></table></figure>
+<p><strong><code>interface</code>可以而 <code>type</code>不行</strong></p>
+<p><code>interface</code> 能够声明合并</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface User &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface User &#123;</span><br><span class="line">  sex: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">User 接口为 &#123;</span></span><br><span class="line"><span class="comment">  name: string</span></span><br><span class="line"><span class="comment">  age: number</span></span><br><span class="line"><span class="comment">  sex: string </span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><code>interface</code> 有可选属性和只读属性</p>
+<ul>
+<li><p>可选属性</p>
+<p>接口里的属性不全都是必需的。 有些是只在某些条件下存在，或者根本不存在。 例如给函数传入的参数对象中只有部分属性赋值了。带有可选属性的接口与普通的接口定义差不多，只是在可选属性名字定义的后面加一个<code>?</code>符号。如下所示</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Person &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  age?: number;</span><br><span class="line">  gender?: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>只读属性</p>
+<p>顾名思义就是这个属性是不可写的，对象属性只能在对象刚刚创建的时候修改其值。 你可以在属性名前用 <code>readonly</code>来指定只读属性，如下所示：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface User &#123;</span><br><span class="line">    readonly loginName: string;</span><br><span class="line">    password: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="声明文件与命名空间"><a href="#声明文件与命名空间" class="headerlink" title="声明文件与命名空间"></a>声明文件与命名空间</h4><p><code>declare</code>：当使用第三方库时，我们需要引用它的声明文件，才能获得对应的代码补全、接口提示等功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="keyword">var</span> <span class="comment">// 声明全局变量</span></span><br><span class="line">declare <span class="function"><span class="keyword">function</span> // 声明全局方法</span></span><br><span class="line"><span class="function"><span class="title">declare</span> <span class="title">class</span> // 声明全局类</span></span><br><span class="line"><span class="function"><span class="title">declare</span> <span class="title">enum</span> // 声明全局枚举类型</span></span><br><span class="line"><span class="function"><span class="title">declare</span> <span class="title">global</span> // 扩展全局变量</span></span><br><span class="line"><span class="function"><span class="title">declare</span> <span class="title">module</span> // 扩展模块</span></span><br></pre></td></tr></table></figure>
+<p><code>namespace</code>：“内部模块”现在称做“命名空间”</p>
+<p>类似模块，同样也可以通过为其他 JS 库使用了命名空间的库创建 <code>.d.ts</code> 文件的声明文件，如为 <code>D3</code> JS 库，可以创建这样的声明文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">declare namespace D3&#123;</span><br><span class="line">    <span class="keyword">export</span> interface Selectors &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line">declare <span class="keyword">var</span> d3: D3.Base;</span><br></pre></td></tr></table></figure>
+<h3 id="优点以及不足"><a href="#优点以及不足" class="headerlink" title="优点以及不足"></a>优点以及不足</h3><p>优点：</p>
+<ul>
+<li>清晰的函数参数/接口属性，增加了代码可读性和可维护性</li>
+<li>静态检查</li>
+<li>生成API文档</li>
+<li>配合现代编辑器，各种提示</li>
+<li>活跃的社区</li>
+</ul>
+<p>不足：</p>
+<ul>
+<li>写代码额外的标记类型声明</li>
+<li>和某些库结合的不是很完美</li>
+</ul>
+<h3 id="TS-in-JS"><a href="#TS-in-JS" class="headerlink" title="TS in JS"></a>TS in JS</h3><h4 id="结合-VSCode-在-JS-里使用-TS-能力的方法"><a href="#结合-VSCode-在-JS-里使用-TS-能力的方法" class="headerlink" title="结合 VSCode 在 JS 里使用 TS 能力的方法"></a>结合 VSCode 在 JS 里使用 TS 能力的方法</h4><ol>
+<li>使用声明文件</li>
+<li>使用 JSDoc </li>
+</ol>
+<p>这两种方式还可以一起作用，实现一些复杂的类型效果。</p>
+<h4 id="怎么去应用"><a href="#怎么去应用" class="headerlink" title="怎么去应用"></a>怎么去应用</h4><ol>
+<li>对公共组件</li>
+<li>和全局变量编写声明文件</li>
+<li>对自定义的函数编写 JSDoc 注释，并优雅的完善它</li>
+<li>对作用域不清晰的的变量、对象等使用 JSDoc 的<code>@type</code>，去指定它的类型</li>
+</ol>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>不要瞎用 JSDoc</li>
+<li>尽量让代码「直跳」到它定义的位置</li>
+</ol>
+<p><img src="/2020/03/20/TypeScript/image-20200317175411567.png" alt="image-20200317175411567"></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="http://www.typescriptlang.org/docs/home" target="_blank" rel="noopener">TypeScript 官网</a></p>
+<p><a href="https://ts.xcatliu.com/" target="_blank" rel="noopener">TypeScript 入门教程</a></p>
+<p><a href="https://es6.ruanyifeng.com/#docs/class" target="_blank" rel="noopener">Class 的基本语法</a></p>
+<p><a href="https://blog.csdn.net/coderising/article/details/100021895" target="_blank" rel="noopener">VS Code为什么能这么牛？</a></p>
+<p><a href="https://juejin.im/post/5e0176b4f265da33a159d9e0#heading-12" target="_blank" rel="noopener">TS in JS 实践指北</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/04/07/url-href/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chaoxin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是chao博客网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/07/url-href/" class="post-title-link" itemprop="url">浅谈 URI、URL、src、href</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-07 20:16:44" itemprop="dateCreated datePublished" datetime="2019-04-07T20:16:44+08:00">2019-04-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-23 10:54:21" itemprop="dateModified" datetime="2020-07-23T10:54:21+08:00">2020-07-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="URI-和-URL"><a href="#URI-和-URL" class="headerlink" title="URI 和 URL"></a>URI 和 URL</h1><p> 与 URI(统一资源标识符) 相比，我们应该比较熟悉 URL (统一资源定位符)。</p>
+<p>URL 正是我们使用浏览器时候输入的网页地址，比如，下面 <a href="http://www.google.com" target="_blank" rel="noopener">http://www.google.com</a> 就是 URL。</p>
+<p><img src="/2019/04/07/url-href/chaoxin/my_blog/source/_posts/url-href/1554641121294.png" alt="1554641121294"></p>
+<h3 id="URI-统一资源标识符"><a href="#URI-统一资源标识符" class="headerlink" title="URI 统一资源标识符"></a>URI 统一资源标识符</h3><p><code>URI</code> 是 Uniform Resource Identifier 的缩写。</p>
+<ul>
+<li><p><strong>Uniform</strong></p>
+<p> 规定统一的格式方便可方便处理多种不同类型的资源。比如常用的 <code>HTTP</code> <code>HTTPS</code> 协议，除此之外，还有 <code>ftp</code>、<code>mailto</code>、<code>telnet</code>、<code>file</code> 等。</p>
+</li>
+<li><p><strong>Resource</strong></p>
+<p>资源的定义是“可以标识的任何东西”。不仅仅是文档文件、图片或者其他服务等能够区别于其他类型的，全都可以作为资源。另外，资源不仅可以是单一的，也可以是多数的集合体。</p>
+</li>
+<li><p><strong>Identifier</strong></p>
+<p>表示可标识的对象，也称为标识符。</p>
+</li>
+</ul>
+<p>综上， <code>URI</code> 就是由某个协议方案表示的资源的定位标识符。该协议方案就是访问资源所使用的协议类型。</p>
+<p>而 <code>URL</code> 表示资源的地点(互联网所处的位置)，可以将其理解为是一种 <code>URI</code> 。</p>
+<h3 id="URI-格式"><a href="#URI-格式" class="headerlink" title="URI 格式"></a>URI 格式</h3><p>表示指定的 <code>URI</code> ，要使用涵盖全部信息的绝对 URI 、绝对 URL 以及相对 URL 。相对 URL ，是指从浏览器中基本 URI 处指定的 URL ，比如 /assets/logo.png 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">http://user:pass@www.example.jp:80/dir/index.html?uid=1#ch1</span><br><span class="line"></span><br><span class="line">http: 协议方案名，指定协议名不区分大小写，最后附加上冒号(:)；</span><br><span class="line">urer:pass 登录信息(可选)；</span><br><span class="line">www.example.jp 服务器地址，可以使这种需要 dns 解析的地址，也可以是 ip 地址；</span><br><span class="line">80 服务器端口号(可选);</span><br><span class="line">/dir/index.html 带层次的文件路径；</span><br><span class="line">?uid=1 查询字符串；</span><br><span class="line"><span class="meta">#</span>ch1 片段标识符；</span><br></pre></td></tr></table></figure>
+<h1 id="href-和-src"><a href="#href-和-src" class="headerlink" title="href 和 src"></a>href 和 src</h1><p>两者通常都是用来外部资源的引入。</p>
+<p>它们的区别在于，<strong><code>src</code> 用来代替标签元素的内容，而 <code>href</code> 是建立标签元素和外部资源的联系。</strong></p>
+<h3 id="href-Hypertext-Reference-超文本引用"><a href="#href-Hypertext-Reference-超文本引用" class="headerlink" title="href(Hypertext Reference) 超文本引用"></a>href(Hypertext Reference) 超文本引用</h3><p>这个属性指定 web 资源的位置，从而定义了当前元素或当前文档与目标锚点或目标资源之间的联系。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="string">"style.css"</span> ref=<span class="string">"stylesheet"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>浏览器知道这是个样式表文件，html 的解析和渲染不会暂停，css 文件的加载是同步进行的，这不同于在 style 标签内的内置样式，用 @import 添加的样式是在页面加载完成之后再加载的，这会导致页面因重新渲染而闪烁。</p>
+<h3 id="src-Source-源"><a href="#src-Source-源" class="headerlink" title="src(Source) 源"></a>src(Source) 源</h3><p>这个属性将资源嵌入当前元素所在位置。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"script.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当浏览器解析到这句代码时候，页面的加载和解析会暂停直到浏览器拿到并执行完这个 js 文件。这就像是把 js 文件里面的内容全部注入到这个 script 标签中，类似与 img, img 标签就是一个空的标签，它的内容由 src 这个属性定义，浏览器会暂停加载直到图片加载完成。这也就是为什么将 js 文件加载放置到 body 最后的原因。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li>《图解 HTPP》</li>
+<li><a href="https://stackoverflow.com/questions/3395359/difference-between-src-and-href" target="_blank" rel="noopener">Difference between SRC and HREF</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/04/07/angularjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chaoxin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是chao博客网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/07/angularjs/" class="post-title-link" itemprop="url">angularjs && ionic1 知识点总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-07 20:13:36 / 修改时间：20:15:32" itemprop="dateCreated datePublished" datetime="2019-04-07T20:13:36+08:00">2019-04-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/angularjs/" itemprop="url" rel="index"><span itemprop="name">angularjs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">0</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/03/24/grep1/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -371,12 +1158,24 @@
                 
               
 
-              <time title="创建时间：2019-03-24 16:20:49 / 修改时间：17:54:43" itemprop="dateCreated datePublished" datetime="2019-03-24T16:20:49+08:00">2019-03-24</time>
+              <time title="创建时间：2019-03-24 16:20:49" itemprop="dateCreated datePublished" datetime="2019-03-24T16:20:49+08:00">2019-03-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-07 20:00:09" itemprop="dateModified" datetime="2019-04-07T20:00:09+08:00">2019-04-07</time>
               
             
           </span>
@@ -393,7 +1192,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
                 
                 
@@ -422,7 +1221,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.5k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -462,32 +1261,32 @@
 <p>简单说，正规表示法就是处理字符串的方法，他是以行为单位进行字符串的处理行为，正规表示法透过一些特殊符号的辅助，可以让使用者轻易达到【搜寻/删除/取代】某特定子串的处理程序！</p>
 </blockquote>
 <p>正规表示法基本是一种【表示法】，只要工具支持这种表示法，那么该工具就可以用正规表示法来处理字符串。例如 <code>vi</code>、<code>grep</code>、<code>awk</code>、<code>sed</code> 等。但例如 <code>cp</code>、<code>ls</code> 等指令就不支持正规表示法。</p>
-<h2 id="2、基础正规表示法"><a href="#2、基础正规表示法" class="headerlink" title="2、基础正规表示法"></a>2、基础正规表示法</h2><h3 id="2-1-grep-的基础用法"><a href="#2-1-grep-的基础用法" class="headerlink" title="2.1 grep 的基础用法"></a>2.1 grep 的基础用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> $ grep [-acinv] [--color=auto] &apos;搜寻字符串&apos; filename</span><br><span class="line"> 选项与参数：</span><br><span class="line">-a ：将binary 档案以text 档案的方式搜寻资料</span><br><span class="line">-c ：计算找到&apos;搜寻字串&apos; 的次数</span><br><span class="line">-i ：忽略大小写的不同，所以大小写视为相同</span><br><span class="line">-n ：顺便输出行号</span><br><span class="line">-v ：反向选择，亦即显示出没有&apos;搜寻字串&apos; 内容的那一行！</span><br><span class="line">--color=auto ：可以将找到的关键字部分加上颜色的显示喔！</span><br><span class="line"></span><br><span class="line">范例一：将last当中，有出现root的那一行就取出来； </span><br><span class="line">$ last | grep &apos;root&apos;</span><br><span class="line"></span><br><span class="line">范例二：与范例一相反，只要没有root的就取出！</span><br><span class="line">$ last | grep -v &apos;root&apos;</span><br><span class="line"></span><br><span class="line">范例三：在last的输出讯息中，只要有root就取出，并且仅取第一栏 </span><br><span class="line">$ last | grep &apos;root&apos; |cut -d &apos; &apos; -f1 </span><br><span class="line">#在取出root之后，利用上个指令cut的处理，就能够仅取得第一栏啰！</span><br><span class="line"></span><br><span class="line">范例四：取出/etc/man_db.conf内含MANPATH的那几行 </span><br><span class="line">$ grep --color=auto &apos;MANPATH&apos; /etc/man_db.conf </span><br><span class="line">....(前面省略)... . </span><br><span class="line">MANPATH _MAP /usr/games /usr/share/man</span><br><span class="line"> MANPATH _MAP /opt/bin /opt/man</span><br><span class="line"> MANPATH _MAP /opt/sbin /opt/man</span><br><span class="line"> #神奇的是，如果加上--color=auto的选项，找到的关键字部分会用特殊颜色显示喔！</span><br></pre></td></tr></table></figure>
+<h2 id="2、基础正规表示法"><a href="#2、基础正规表示法" class="headerlink" title="2、基础正规表示法"></a>2、基础正规表示法</h2><h3 id="2-1-grep-的基础用法"><a href="#2-1-grep-的基础用法" class="headerlink" title="2.1 grep 的基础用法"></a>2.1 grep 的基础用法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> $</span> grep [-acinv] [--color=auto] '搜寻字符串' filename</span><br><span class="line"> 选项与参数：</span><br><span class="line">-a ：将binary 档案以text 档案的方式搜寻资料</span><br><span class="line">-c ：计算找到'搜寻字串' 的次数</span><br><span class="line">-i ：忽略大小写的不同，所以大小写视为相同</span><br><span class="line">-n ：顺便输出行号</span><br><span class="line">-v ：反向选择，亦即显示出没有'搜寻字串' 内容的那一行！</span><br><span class="line">--color=auto ：可以将找到的关键字部分加上颜色的显示喔！</span><br><span class="line"></span><br><span class="line">范例一：将last当中，有出现root的那一行就取出来； </span><br><span class="line"><span class="meta">$</span> last | grep 'root'</span><br><span class="line"></span><br><span class="line">范例二：与范例一相反，只要没有root的就取出！</span><br><span class="line"><span class="meta">$</span> last | grep -v 'root'</span><br><span class="line"></span><br><span class="line">范例三：在last的输出讯息中，只要有root就取出，并且仅取第一栏 </span><br><span class="line"><span class="meta">$</span> last | grep 'root' |cut -d ' ' -f1 </span><br><span class="line"><span class="meta">#</span>在取出root之后，利用上个指令cut的处理，就能够仅取得第一栏啰！</span><br><span class="line"></span><br><span class="line">范例四：取出/etc/man_db.conf内含MANPATH的那几行 </span><br><span class="line"><span class="meta">$</span> grep --color=auto 'MANPATH' /etc/man_db.conf </span><br><span class="line">....(前面省略)... . </span><br><span class="line">MANPATH _MAP /usr/games /usr/share/man</span><br><span class="line"> MANPATH _MAP /opt/bin /opt/man</span><br><span class="line"> MANPATH _MAP /opt/sbin /opt/man</span><br><span class="line"><span class="meta"> #</span>神奇的是，如果加上--color=auto的选项，找到的关键字部分会用特殊颜色显示喔！</span><br></pre></td></tr></table></figure>
 <p><strong><code>gerp</code> 可以解析一行文字，取得关键字，若这行有存在关键字，就会整列出来。</strong></p>
 <h3 id="2-2-grep-基础正规表示法练习"><a href="#2-2-grep-基础正规表示法练习" class="headerlink" title="2.2 grep 基础正规表示法练习"></a>2.2 grep 基础正规表示法练习</h3><ul>
 <li><h4 id="搜寻特定字符"><a href="#搜寻特定字符" class="headerlink" title="搜寻特定字符"></a>搜寻特定字符</h4></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ grep -n &apos;the&apos; regular_express.txt</span><br><span class="line">8:I can&apos;t finish the test.</span><br><span class="line">12: the symbol &apos;*&apos; is represented as start.</span><br><span class="line">15:You are the best is mean you are the no. 1.</span><br><span class="line">16:The world &lt;Happy&gt; is the same with &quot;glad&quot;.</span><br><span class="line">18:google is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> grep -n 'the' regular_express.txt</span><br><span class="line">8:I can't finish the test.</span><br><span class="line">12: the symbol '*' is represented as start.</span><br><span class="line">15:You are the best is mean you are the no. 1.</span><br><span class="line">16:The world &lt;Happy&gt; is the same with "glad".</span><br><span class="line">18:google is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
 <p><strong>反向选择</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -vn &apos;the&apos; regulary_express.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> grep -vn 'the' regulary_express.txt</span><br></pre></td></tr></table></figure>
 <p><strong>不区分大小写</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ grep -in &apos;the&apos; regulary_express.txt</span><br><span class="line">8:I can&apos;t finish the test.</span><br><span class="line">9:Oh! The soup taste good.</span><br><span class="line">12: the symbol &apos;*&apos; is represented as start.</span><br><span class="line">14: The gd software is a library for drafting programs.</span><br><span class="line">15:You are the best is mean you are the no. 1.</span><br><span class="line">16: The world &lt;Happy&gt; is the same with &quot;glad&quot;.</span><br><span class="line">18:google is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> grep -in 'the' regulary_express.txt</span><br><span class="line">8:I can't finish the test.</span><br><span class="line">9:Oh! The soup taste good.</span><br><span class="line">12: the symbol '*' is represented as start.</span><br><span class="line">14: The gd software is a library for drafting programs.</span><br><span class="line">15:You are the best is mean you are the no. 1.</span><br><span class="line">16: The world &lt;Happy&gt; is the same with "glad".</span><br><span class="line">18:google is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="利用中括号-来搜寻集合字元"><a href="#利用中括号-来搜寻集合字元" class="headerlink" title="利用中括号 [] 来搜寻集合字元"></a>利用中括号 [] 来搜寻集合字元</h4><p>如果想要搜寻 <code>tast</code> 或 <code>test</code> 这两个单字时</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ grep -n &apos;t[ae]st&apos; regulay_express.txt</span><br><span class="line">8:I can&apos;t finish the test .</span><br><span class="line">9:Oh! The soup tast e good.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> grep -n 't[ae]st' regulay_express.txt</span><br><span class="line">8:I can't finish the test .</span><br><span class="line">9:Oh! The soup tast e good.</span><br></pre></td></tr></table></figure>
 <p><strong>其实 [] 里面无论有几个字元，都仅代表某一个字元 </strong></p>
 <p>集合字元的反向选择[^] </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;[^g]oo&apos; regular_express.txt </span><br><span class="line">2:apple is my favorite foo d.</span><br><span class="line">3: Foo tball game is not use feet only.</span><br><span class="line">18:google is the best too ls for search keyword.</span><br><span class="line">19:g oooooo gle yes!</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n '[^g]oo' regular_express.txt </span><br><span class="line">2:apple is my favorite foo d.</span><br><span class="line">3: Foo tball game is not use feet only.</span><br><span class="line">18:google is the best too ls for search keyword.</span><br><span class="line">19:g oooooo gle yes!</span><br></pre></td></tr></table></figure>
 <p>假设我oo 前面不想要有小写字元，所以，我可以这样写[^abcd….z]oo ， 但是这样似乎不怎么方便，由于小写字元的ASCII 上编码的顺序是连续的， 因此，我们可以将之简化为底下这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;[^az]oo&apos; regular_express.txt </span><br><span class="line">3: Foo tball game is not use feet only.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n '[^az]oo' regular_express.txt </span><br><span class="line">3: Foo tball game is not use feet only.</span><br></pre></td></tr></table></figure>
 <p>也就是说，当我们在一组集合字元中，如果该字元组是连续的，例如大写英文/小写英文/数字等等， 就可以使用[az],[AZ],[0-9]等方式来书写，那么如果我们的要求字串是数字与英文呢？呵呵！就将他全部写在一起，变成：[a-zA-Z0-9]。</p>
 <ul>
 <li><h4 id="行首与行尾字元"><a href="#行首与行尾字元" class="headerlink" title="行首与行尾字元^ $"></a>行首与行尾字元^ $</h4><p>定位以字符 <code>the</code> 开头</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;^the&apos; regular_express.txt </span><br><span class="line">12: the symbol &apos;*&apos; is represented as start.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n '^the' regular_express.txt </span><br><span class="line">12: the symbol '*' is represented as start.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="任意一个字元-与重复字元"><a href="#任意一个字元-与重复字元" class="headerlink" title="任意一个字元. 与重复字元"></a>任意一个字元. 与重复字元</h4><p>**. (小数点)：代表『一定有一个任意字元』的意思；</p>
 </li>
@@ -496,11 +1295,11 @@
 <li><h4 id="限定连续RE-字符范围"><a href="#限定连续RE-字符范围" class="headerlink" title="限定连续RE 字符范围{}"></a>限定连续RE 字符范围{}</h4></li>
 </ul>
 <p>因为{与}的符号在shell是有特殊意义的，因此，我们必须要使用跳脱字符\来让他失去特殊意义才行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;o\&#123;2\&#125;&apos; regular_express.txt </span><br><span class="line">1:&quot;Open Source&quot; is ag oo d mechanism to develop programs.</span><br><span class="line">2:apple is my favorite f oo d.</span><br><span class="line">3:F oo tball game is not use feet only.</span><br><span class="line">9:Oh! The soup taste g oo d.</span><br><span class="line">18:g oo gle is the best t oo ls for search keyword.</span><br><span class="line">19:g oooooo gle yes!</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n 'o\&#123;2\&#125;' regular_express.txt </span><br><span class="line">1:"Open Source" is ag oo d mechanism to develop programs.</span><br><span class="line">2:apple is my favorite f oo d.</span><br><span class="line">3:F oo tball game is not use feet only.</span><br><span class="line">9:Oh! The soup taste g oo d.</span><br><span class="line">18:g oo gle is the best t oo ls for search keyword.</span><br><span class="line">19:g oooooo gle yes!</span><br></pre></td></tr></table></figure>
 <p>假设我们要找出g 后面接2 到5 个o ，然后再接一个g 的字串，他会是这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;go\&#123;2,5\&#125;g&apos; regular_express.txt </span><br><span class="line">18: goog le is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n 'go\&#123;2,5\&#125;g' regular_express.txt </span><br><span class="line">18: goog le is the best tools for search keyword.</span><br></pre></td></tr></table></figure>
 <p>如果我想要的是2 个o 以上的goooo….g 呢？除了可以是gooo*g ，也可以是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n &apos;go\&#123;2,\&#125;g&apos; regular_express.txt </span><br><span class="line">18: goog le is the best tools for search keyword.</span><br><span class="line">19: goooooog le yes!</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep -n 'go\&#123;2,\&#125;g' regular_express.txt </span><br><span class="line">18: goog le is the best tools for search keyword.</span><br><span class="line">19: goooooog le yes!</span><br></pre></td></tr></table></figure>
 <h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><p><a href="http://linux.vbird.org/linux_basic/0330regularex.php#grep" target="_blank" rel="noopener">鸟哥的Linux 私房菜</a></p>
 
           
@@ -553,20 +1352,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/03/01/scroll/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -723,20 +1522,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/02/25/question1/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -905,20 +1704,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/02/15/xmind/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -977,7 +1776,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ubuntu软件/" itemprop="url" rel="index"><span itemprop="name">ubuntu软件</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ubuntu软件/" itemprop="url" rel="index"><span itemprop="name">ubuntu软件</span></a></span>
 
                 
                 
@@ -1057,7 +1856,7 @@
 <p><code>sudo chmod 777 XMind -R</code></p>
 <p>解决后面打开<code>XMind</code>遇到读写权限问题</p>
 <ul>
-<li><img src="/2019/02/15/xmind/xmind-error2.png" alt=""></li>
+<li><img src="/2019/02/15/xmind/xmind-error2.png" alt></li>
 </ul>
 <p>解决：</p>
 <p><code>sudo gedit /opt/XMind/XMind_amd64/XMind.ini</code></p>
@@ -1114,20 +1913,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/01/29/prettier/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -1186,7 +1985,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/VSCode编辑器/" itemprop="url" rel="index"><span itemprop="name">VSCode编辑器</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/VSCode编辑器/" itemprop="url" rel="index"><span itemprop="name">VSCode编辑器</span></a></span>
 
                 
                 
@@ -1253,7 +2052,7 @@
           
             <h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p>配置使用<code>ESLint</code> <code>Prettier</code>使用后出现如下问题</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js 文件部分配置如下</span></span><br><span class="line">  extends: [<span class="string">'standard'</span>, <span class="string">'plugin:vue/strongly-recommended'</span>, <span class="string">'@vue/prettier'</span>],</span><br><span class="line">  plugins: [<span class="string">'vue'</span>],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">'prettier/prettier'</span>: [<span class="string">'error'</span>],</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/prettier/2019-01-29 15-14-59 的屏幕截图.png" alt=""></p>
+<p><img src="/2019/01/29/prettier/2019-01-29 15-14-59 的屏幕截图.png" alt></p>
 <p>出现莫名的提示<strong>空格 回车</strong> 错误</p>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js 配置rules部分添加</span></span><br><span class="line">rules: &#123;</span><br><span class="line">    <span class="string">'prettier/prettier'</span>: [</span><br><span class="line">      <span class="string">'error'</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        singleQuote: <span class="literal">true</span>,</span><br><span class="line">        trailingComma: <span class="string">'none'</span>,</span><br><span class="line">         bracketSpacing: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">// jsxBracketSameLine: true,</span></span><br><span class="line">        <span class="comment">// parser: 'flow',</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考链接：<a href="https://nice.lovejade.cn/zh/article/beautify-vue-by-eslint-and-prettier.html#%E6%B7%BB%E5%8A%A0%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">静晴轩别苑</a></p>
@@ -1308,20 +2107,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/01/28/polyfill/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -1380,7 +2179,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
@@ -1502,20 +2301,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/01/19/es6-module/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="这是chao博客网站">
     </span>
 
@@ -1586,7 +2385,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端学习/" itemprop="url" rel="index"><span itemprop="name">前端学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端学习/" itemprop="url" rel="index"><span itemprop="name">前端学习</span></a></span>
 
                 
                 
@@ -1775,712 +2574,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/01/18/vue3-vw/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这是chao博客网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/18/vue3-vw/" class="post-title-link" itemprop="url">vue-cli3 移动端适配--vw解决方案</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-18 10:15:57" itemprop="dateCreated datePublished" datetime="2019-01-18T10:15:57+08:00">2019-01-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-22 16:19:39" itemprop="dateModified" datetime="2019-01-22T16:19:39+08:00">2019-01-22</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端学习/" itemprop="url" rel="index"><span itemprop="name">前端学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="使用Vue-cli3创建项目"><a href="#使用Vue-cli3创建项目" class="headerlink" title="使用Vue-cli3创建项目"></a>使用Vue-cli3创建项目</h1><blockquote>
-<p>Vue CLI3的包名称变为了 <code>@vue/cli</code></p>
-</blockquote>
-<p>全局安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue-cli</span><br></pre></td></tr></table></figure>
-<p>创建新项目命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create &lt;项目名&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="安装配置PostCSS插件"><a href="#安装配置PostCSS插件" class="headerlink" title="安装配置PostCSS插件"></a>安装配置PostCSS插件</h1><ol>
-<li>安装插件</li>
-</ol>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i postcss-aspect-ratio-mini postcss-px-to-viewport postcss-write-svg postcss-preset-env postcss-viewport-units cssnano cssnano-preset-advanced postcss-import postcss-viewport-units postcss-url --save-dev</span><br></pre></td></tr></table></figure>
-<p>   其中<code>postcss-cssnext</code>变更为<code>post-preset-env</code></p>
-<p>   安装结果如下：</p>
-<p>   <img src="https://i.loli.net/2019/01/18/5c413fc22bf8b.png" alt="1547778601670"></p>
-<ol start="2">
-<li>配置PostCSS插件</li>
-</ol>
-<p>   在根目录<code>post.config.js</code>文件中</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-import'</span>), <span class="comment">// 解决@import引入路径问题</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-url'</span>), <span class="comment">// 该插件用来处理图片、字体等文件引入路径问题</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-aspect-ratio-mini'</span>), <span class="comment">// 宽高比</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-write-svg'</span>)(&#123; <span class="attr">utf8</span>: <span class="literal">false</span> &#125;), <span class="comment">// 移动端1px问题</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-preset-env'</span>), <span class="comment">// CSS的新特性 (其中包含autoprefixer)</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'postcss-px-to-viewport'</span>)(&#123; <span class="comment">// px转vw工具</span></span><br><span class="line">      viewportWidth: <span class="number">750</span>, <span class="comment">// 视窗的宽度，对应的是我们设计稿的宽度，一般是750</span></span><br><span class="line">      viewportHeight: <span class="number">1334</span>, <span class="comment">// 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置</span></span><br><span class="line">      unitPrecision: <span class="number">3</span>, <span class="comment">// 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）</span></span><br><span class="line">      viewportUnit: <span class="string">'vw'</span>, <span class="comment">// 指定需要转换成的视窗单位，建议使用vw</span></span><br><span class="line">      selectorBlackList: [<span class="string">'.ignore'</span>, <span class="string">'.hairlines'</span>], <span class="comment">// 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名</span></span><br><span class="line">      minPixelValue: <span class="number">1</span>, <span class="comment">// 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值</span></span><br><span class="line">      mediaQuery: <span class="literal">false</span> <span class="comment">// 允许在媒体查询中转换`px`</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'cssnano'</span>)(&#123; <span class="comment">// 用来压缩和清理CSS代码</span></span><br><span class="line">      preset: <span class="string">"advanced"</span>, </span><br><span class="line">      autoprefixer: <span class="literal">false</span>, </span><br><span class="line">      <span class="string">"postcss-zindex"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>大漠老师 <a href="https://www.w3cplus.com/mobile/vw-layout-in-vue.html" target="_blank" rel="noopener">如何在Vue项目中使用vw实现移动端适配</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/01/17/guidance/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这是chao博客网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/17/guidance/" class="post-title-link" itemprop="url">Hexo博客使用</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-17 17:24:43" itemprop="dateCreated datePublished" datetime="2019-01-17T17:24:43+08:00">2019-01-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-24 18:02:30" itemprop="dateModified" datetime="2019-03-24T18:02:30+08:00">2019-03-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/搭建博客/" itemprop="url" rel="index"><span itemprop="name">搭建博客</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">609</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h1><p>根目录下命令行输入<code>hexo new &lt;模板&gt; &lt;文章名&gt;</code> 新建文章</p>
-<p>其中的<code>模板</code>在<code>scaffolds</code>文件夹中，默认有三种模板<code>post</code>、<code>draft</code>、<code>page</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>功能</th>
-<th>路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>post</td>
-<td>新建文章</td>
-<td>/source/_posts</td>
-</tr>
-<tr>
-<td>draft</td>
-<td>新建草稿</td>
-<td>/source/_draft</td>
-</tr>
-<tr>
-<td>page</td>
-<td>新建页面（标签页、分类页等）</td>
-<td>/source/</td>
-</tr>
-</tbody>
-</table>
-<p>通常使用<code>hexo new post &lt;title&gt;</code>新建文章，这里的<code>&lt;titel&gt;</code>不是文章名字。</p>
-<p>例如新建一篇文章 <code>hexo new post ariticles</code></p>
-<p>然后在<code>source/_posts</code>文件夹下面多了一个<code>articles.md</code>文件</p>
-<p><img src="/home/chaoxin/.config/Typora/typora-user-images/1547718477899.png" alt="1547718477899"></p>
-<p>打开文件后（使用的Typora编辑器打开）</p>
-<p><img src="/home/chaoxin/.config/Typora/typora-user-images/1547718570227.png" alt="1547718570227"></p>
-<p>在其中配置文章相关内容，标签、分类等。其中<code>title</code>为文章发表后的文章页面显示的标题。</p>
-<p>而<code>.md</code>文件的名字，将作为文章的链接地址显示，例如本篇的文件名：<code>articles.md</code>，那么本篇文章的地址为<code>http://xxx.xxx/ariticles.html</code></p>
-<h1 id="文章模板"><a href="#文章模板" class="headerlink" title="文章模板"></a>文章模板</h1><p>在新建文章的<code>post</code>参数就是模板的名称，在使用<code>hexo new post &lt;title&gt;</code>命令新建文章时，系统会自动在<code>scaffolds</code>文件夹下寻找<code>post</code>文件，根据该配置文件生新的<code>.md</code>文件</p>
-<h1 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h1><h1 id="创建文章并发布"><a href="#创建文章并发布" class="headerlink" title="创建文章并发布"></a>创建文章并发布</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xinc127.github.io/2019/01/17/viewports/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chaoxin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这是chao博客网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/17/viewports/" class="post-title-link" itemprop="url">viewports教程_学习笔记</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-17 15:16:13 / 修改时间：17:13:03" itemprop="dateCreated datePublished" datetime="2019-01-17T15:16:13+08:00">2019-01-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端学习/" itemprop="url" rel="index"><span itemprop="name">前端学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="概念-设备的pixels和CSS的pixels"><a href="#概念-设备的pixels和CSS的pixels" class="headerlink" title="概念:  设备的pixels和CSS的pixels"></a>概念:  设备的pixels和CSS的pixels</h1><p>设备pixels大多数情况下可以通过screen.width/height上获取到。</p>
-<p>当用户缩放浏览器时就是将CSS的pixels变大，缩放200%即将1个CSS的pixels变成了4个设备的piexels的大小，即宽度 <em> 2、高度 </em> 2，面积扩大了2 * 2.</p>
-<blockquote>
-<p>用户缩放时，浏览器自动使CSS的pixels缩放</p>
-</blockquote>
-<h1 id="100-缩放"><a href="#100-缩放" class="headerlink" title="100% 缩放"></a>100% 缩放</h1><blockquote>
-<p>在缩放级别为100%时，1单位的CSS的pixels是严格相等于1单位的设备pixels</p>
-</blockquote>
-<h1 id="屏幕尺寸-Screen-size"><a href="#屏幕尺寸-Screen-size" class="headerlink" title="屏幕尺寸 Screen size"></a>屏幕尺寸 Screen size</h1><p>screen.width/height</p>
-<ul>
-<li><p>用户屏幕的完整大小</p>
-</li>
-<li><p>显示器特性与浏览器无关</p>
-</li>
-</ul>
-<h1 id="浏览器尺寸-Window-size"><a href="#浏览器尺寸-Window-size" class="headerlink" title="浏览器尺寸 Window size"></a>浏览器尺寸 Window size</h1><p>window.innerWidth/Height</p>
-<ul>
-<li>包含滚动条尺寸浏览器的完整大小</li>
-</ul>
-<h1 id="滚动移位-Scrolling-offset"><a href="#滚动移位-Scrolling-offset" class="headerlink" title="滚动移位 Scrolling offset"></a>滚动移位 Scrolling offset</h1><p>window.pageX/YOffset</p>
-<ul>
-<li>页面的位移</li>
-</ul>
-<p>window.pageXOffset 和 window.pageYOffset，定义了页面（document）的相对于窗口原点的水平和垂直位移。因此可以知道用户将页面滚动了多少。</p>
-<blockquote>
-<p>缩放不影响window.pageX/YOffset的大小</p>
-</blockquote>
-<h1 id="视窗-viewport"><a href="#视窗-viewport" class="headerlink" title="视窗 viewport"></a>视窗 viewport</h1><blockquote>
-<p>决定了页面中最高块状（block）元素： <html> 元素 的大小</html></p>
-</blockquote>
-<p><html>宽度受 viewport 所限制，<html> 元素宽度为 viewport 的100%.</html></html></p>
-<p>通常，一个块级元素占其父级元素的100%宽度。所以<body>的宽度就是其父元素<html>的100%.</html></body></p>
-<ul>
-<li>viewport宽度等于浏览器宽度</li>
-<li>缩放比例100%显示正常，放大浏览器时，viewport变得比网站的宽度更小，对viewport无影响，但页面内容溢出了<html>元素</html></li>
-</ul>
-<p><img src="https://i.loli.net/2019/01/17/5c40471ec8bb0.png" alt="1547714572314"></p>
-<h1 id="页面的宽度-document-width"><a href="#页面的宽度-document-width" class="headerlink" title="页面的宽度 document.width"></a>页面的宽度 document.width</h1><h1 id="度量-viewport"><a href="#度量-viewport" class="headerlink" title="度量 viewport"></a>度量 viewport</h1><p>doucment.documentElement.clientWidth/Height</p>
-<ul>
-<li>viewport 的尺寸</li>
-</ul>
-<p>document.documentElement 就是 <html> 元素：HTML文档的根元素</html></p>
-<p>虽然document.documentElement好像是从<html>元素获取值，但实际上是viewport.通过给<html>元素赋值，再通过docuent.documentElement获取到的值不变。（不建议给<html>元素赋值）</html></html></html></p>
-<blockquote>
-<p>这个特殊的规则只针对这个特殊的情况下，在其余情况下等于元素使用的实际宽度。</p>
-</blockquote>
-<h1 id="两个特性对-two-property-pairs"><a href="#两个特性对-two-property-pairs" class="headerlink" title="两个特性对 two property pairs"></a>两个特性对 two property pairs</h1><p>用来描述viewport尺寸的还有 window.innerWidth/Height</p>
-<p>两者的区别：</p>
-<ul>
-<li>window.innerWidth/Height 包含滚动条</li>
-<li>document.documentElement.clientWidth/Height 不包含</li>
-</ul>
-<h1 id="度量-元素"><a href="#度量-元素" class="headerlink" title="度量  元素"></a>度量 <html> 元素</html></h1><p>document.documentElement.offsetWidth/Height</p>
-<p>用来获取<html>元素的尺寸</html></p>
-<h1 id="事件坐标-Event-coordinates"><a href="#事件坐标-Event-coordinates" class="headerlink" title="事件坐标 Event coordinates"></a>事件坐标 Event coordinates</h1><p>pageX/Y、clientX/Y、screenX/Y分别是</p>
-<ul>
-<li>从<html>原点到事件触发的CSS的pixels</html></li>
-<li>从浏览器（viewport）原点到事件触发的CSS的pixels</li>
-<li>从显示器原点到事件触发的CSS的pixels</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上为桌面浏览器涉及到的一些概念。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2517,7 +2610,7 @@
 
       <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/33974294?s=400&u=a84aff9ae007ac5e71c69573ff63492645b625d5&v=4" alt="chaoxin">
             
@@ -2532,7 +2625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2557,7 +2650,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -2598,7 +2693,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -2644,7 +2743,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2658,7 +2757,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">25k</span>
   
 
   
@@ -2669,7 +2768,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">23 分钟</span>
   
 </div>
 
